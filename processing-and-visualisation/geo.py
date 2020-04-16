@@ -1,4 +1,4 @@
-from geopy.distance import vincenty
+from geopy.distance import geodesic
 import sys
 
 args = sys.argv[1:]
@@ -15,7 +15,7 @@ lon1 = args[0]
 lat2 = args[3]
 lon2 = args[1]
 
-distance = vincenty((lat1, lon1), (lat2, lon2)).meters
+distance = geodesic((lat1, lon1), (lat2, lon2)).meters
 
 if (distance < 200):
     print(distance)
