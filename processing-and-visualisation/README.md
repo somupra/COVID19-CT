@@ -15,3 +15,5 @@ This will generate two files ready to import to node4j:
 Use `import-graph.cypher` to import graph to node4j.
 
 `geo.py` measures the distance between two location points.
+
+Run `./remap-ids.sh <filename>` to re-map all ids to numbers form 1 to n. This will generate a new file in the same directory.
