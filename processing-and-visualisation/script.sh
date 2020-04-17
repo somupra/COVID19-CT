@@ -27,8 +27,7 @@ while IFS= read -r TIMESTAMP; do
             then
                 ID1=$(cut -d , -f 1 <<< "$SHOT1")
                 ID2=$(cut -d , -f 1 <<< "$SHOT2")
-                echo "$ID1,$ID2,$TIMESTAMP,$DISTANCE" >> contact.csv
-                echo "$ID2,$ID1,$TIMESTAMP,$DISTANCE" >> contact.csv
+                echo "$ID1,$ID2,$TIMESTAMP,$DISTANCE" >> "$1.contact.csv"
                 echo "New Entry Added"
             fi
         done
@@ -37,8 +36,8 @@ done <<< "$TIMESTAMPS"
 
 echo "Checkpoint 3"
 
-USERS=$(cat contact.csv | cut -d , -f 1 | awk '!a[$0]++')
-echo "$USERS" | sed 's/$/,no/' > people.csv
+#USERS=$(cat contact.csv | cut -d , -f 1 | awk '!a[$0]++')
+#echo "$USERS" | sed 's/$/,no/' > people.csv
 
 sed -i '1s/^/id,infected\n/' people.csv
 sed -i '1s/^/id1,id2,time,distance\n/' contact.csv
