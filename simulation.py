@@ -37,6 +37,7 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
             })
 
             if idx % (population * tstamp_per_day) == 0 and idx != 0 or idx == (population*tstamp_per_day*days) - 1:
+              
                 # One day has been processed, update the graph based on this and free the memory
                 print("Updating graph for day ",idx // (population * tstamp_per_day) ,"...")
                 graph.update_graph(register)

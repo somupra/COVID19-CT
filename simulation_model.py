@@ -33,6 +33,8 @@ class Graph:
             self.nodes[p1["id"]].edge_dict[p2["id"]] = [(p2["time"], dist)]
         else:
             print("checkpoint: ", self.nodes[p1["id"]].edge_dict)
+            print("checkpoint: ", self.nodes[p1["id"]].edge_dict[int(p2["id"])])
+            print(type(p2["id"]))
             self.nodes[p1["id"]].edge_dict[p2["id"]].append((p2["time"], dist))
 
         
