@@ -32,12 +32,11 @@ class Graph:
             self.nodes[p1["id"]] = Node(id=p1["id"])
             self.nodes[p1["id"]].edge_dict[p2["id"]] = [(p2["time"], dist)]
         else:
-            print("checkpoint: ", self.nodes[p1["id"]].edge_dict)
-            print("checkpoint: ", self.nodes[p1["id"]].edge_dict[1])
-            print(p2["id"])
-            print(type(p2["id"]))
-            print(int(p2['id']))
-            self.nodes[p1["id"]].edge_dict[p2["id"]].append((p2["time"], dist))
+            print(p1, p2)
+            if p2["id"] in self.nodes[p1["id"]].edge_dict.keys():
+                self.nodes[p1["id"]].edge_dict[p2["id"]].append((p2["time"], dist))
+            else:
+                self.nodes[p1["id"]].edge_dict[p2["id"]] = [(p2["time"], dist)]
 
         
         if not self.nodes[p2["id"]]:
@@ -45,7 +44,10 @@ class Graph:
             self.nodes[p2["id"]] = Node(id=p2["id"])
             self.nodes[p2["id"]].edge_dict[p1["id"]] = [(p1["time"], dist)]
         else:
-            self.nodes[p2["id"]].edge_dict[p1["id"]].append((p1["time"], dist))
+            if p1["id"] in self.nodes[p2["id"]].edge_dict.keys():
+                self.nodes[p2["id"]].edge_dict[p1["id"]].append((p1["time"], dist))
+            else:
+                self.nodes[p2["id"]].edge_dict[p1["id"]] = [(p1["time"], dist)]
 
 
     def update_graph(self, register):
