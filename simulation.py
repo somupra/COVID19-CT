@@ -1,4 +1,4 @@
-from params import INITIAL_INF_POP, C_SIZE
+from params import INITIAL_INF_POP, C_SIZE, ISOLATION_PROB_THRESHOLD
 from geopy.distance import geodesic
 from simulation_model import Node, Graph
 from collections import deque
@@ -12,29 +12,22 @@ import random
 def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='level3'):
     """path: path to csv file, population: Population of the city simulation must run onto, days: Number of days which simulation must be run, tstamp_per_day: per day per person number of location entries in the csv file, algo_mode: level0, level1, level3, total_isolation [Depth upto which infected population must be isolated]"""
     # create a graph
+    print("Creating city model ...")
     graph = Graph(population)
+    print("City model created successfully ...")
 
     # read file by chunks and store data for a day in a register
+    print("Initializing Register ...")
     register = []
     for _ in range(tstamp_per_day):
         register.append([])
 
+    print("Register Initialized")
     """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
+
+    print("starting to read by chunks, block size =", C_SIZE)
     for chunk in pd.read_csv(path, chunksize = C_SIZE, header=None, names=['x', 'y']):
         for idx, entry in chunk.iterrows():
-            if idx % (population * days) and idx != 0 or idx == (population*tstamp_per_day*days) - 1:
-                # One day has been processed, update the graph based on this and free the memory
-                graph.update_graph(register)
-
-                # Clean the register, get it ready for the next day
-                purge_register(register)
-
-                # Run the infection in the city for this day
-                infect_city(city=graph, curr_day=idx % (population * days))
-
-                # Purge the city for this day
-                purge_city(city=graph, curr_day=idx % (population * days), level=algo_mode)
-
             # Take the input in the register
             register[idx % tstamp_per_day].append({
                 "id": (idx // tstamp_per_day) % population, 
@@ -42,6 +35,25 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
                 "x": entry["x"],
                 "y": entry["y"]
             })
+
+            if idx % (population * tstamp_per_day) == 0 and idx != 0 or idx == (population*tstamp_per_day*days) - 1:
+                # One day has been processed, update the graph based on this and free the memory
+                print("Updating graph for day ",idx % (population * days) ,"...")
+                graph.update_graph(register)
+                print("Graph updated")
+
+                # Clean the register, get it ready for the next day
+                purge_register(register)
+                print("Register purged")
+
+                # Run the infection in the city for this day
+                print("Infecting the city for day ",idx % (population * days), "...")
+                infect_city(city=graph, curr_day=idx % (population * days))
+                print("City infected successfully")
+
+                # Purge the city for this day
+                print("purging city")
+                purge_city(city=graph, curr_day=idx % (population * days), level=algo_mode)
 
 def purge_register(register):
     """Purges the register, i.e. clears up all the lists and collects the garbage memory"""
@@ -87,7 +99,7 @@ def bfs(city, inf_node):
             trg_node = city.nodes[trg_node_ptr]
             if not trg_node.visited and trg_node.not_isolated() and not trg_node.is_infected():
                 attach_prob(u, trg_node)
-                if trg_node.inf_prob > 0.6:
+                if trg_node.inf_prob > ISOLATION_PROB_THRESHOLD:
                     infect_node(city, trg_node)
                     trg_node.day_of_isolation = min(u.day_of_isolation + 5, trg_node.day_of_isolation)
                 bfs_queue.append(trg_node)
