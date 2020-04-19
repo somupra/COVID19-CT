@@ -14,7 +14,7 @@ class Node:
     def is_infected(self):
         return self.status == 'infected'
     def __str__(self):
-	return "NODE: {0}".format(self.id)
+	    return "NODE: {0}".format(self.id)
 
 class Graph:
     def __init__(self, population):
@@ -28,11 +28,12 @@ class Graph:
 
         if not self.nodes[p1["id"]]:
             # If p1 node has no contacts yet, init it, and add entry of p2 in its edge_dict
-	    print(p1, p2)
+	        print(p1, p2)
             self.nodes[p1["id"]] = Node(id=p1["id"])
             self.nodes[p1["id"]].edge_dict[p2["id"]] = [(p2["time"], dist)]
         else:
-	    print("adding something")
+	        print("adding something")
+            print(self.nodes[p1["id"]].edge_dict)
             self.nodes[p1["id"]].edge_dict[p2["id"]].append((p2["time"], dist))
 
         
