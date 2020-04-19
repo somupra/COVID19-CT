@@ -37,7 +37,7 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
 
             # Take the input in the register
             register[idx % tstamp_per_day].append({
-                "id": idx // tstamp_per_day, 
+                "id": (idx // tstamp_per_day) % population, 
                 "time": (idx // (population*tstamp_per_day)*1000) + idx % tstamp_per_day,
                 "x": entry["x"],
                 "y": entry["y"]
@@ -78,17 +78,17 @@ def attach_prob(src, trg):
 
 def bfs(city, inf_node):
     bfs_queue = deque()
-    if not inf_node.visited: bfs_queue.append(inf_node)
+    if not inf_node.visited and inf_node.not_isolated(): bfs_queue.append(inf_node)
     inf_node.visited = True
 
     while bfs_queue:
         u = bfs_queue.popleft()
         for trg_node_ptr in u.edge_dict.keys():
             trg_node = city.nodes[trg_node_ptr]
-            if not trg_node.visited and trg_node.not_isolated():
+            if not trg_node.visited and trg_node.not_isolated() and not trg_node.is_infected():
                 attach_prob(u, trg_node)
                 if trg_node.inf_prob > 0.6:
-                    trg_node.status = 'infected'
+                    infect_node(city, trg_node)
                     trg_node.day_of_isolation = min(u.day_of_isolation + 5, trg_node.day_of_isolation)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
@@ -101,15 +101,21 @@ def bfs_infection_run(city, infected_sample=None, node=None):
     else:
         bfs(city, node)
 
+def infect_node(city, node):
+    if not node.is_infected():
+        node.status = 'infected'
+        city.healthy -= 1
+        city.infected += 1
+
 
 def infect_city(city, curr_day):
     if curr_day in [0, 1, 2, 3, 4]:
-        existing_nodes = [node for node in city.nodes if node]
+        existing_nodes = [node for node in city.nodes if node and node.not_isolated()]
         infected_sample = random.choices(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
         for node in infected_sample:
-            node.status = 'infected'
             node.day_of_isolation = curr_day
             node.inf_prob = 1
+            infect_node(city, node)
 
         bfs_infection_run(city=city, infected_sample=infected_sample)
     else:
@@ -118,44 +124,42 @@ def infect_city(city, curr_day):
                 bfs_infection_run(city=city, node=node)
     city.reset_visit()
 
+def isolate_node(city, node):
+    if node.not_isolated():
+        city.infected -= 1
+        city.isolated += 1
+        node.status = 'isolated'
+
 def purge_city(city, curr_day, level):
     """Purges the infected city. If infection is found as well as the individual is not isolated till date."""
 
     # Isolate only infected people who show infection on curr_day
     if level == 'level0':
-        for node in city.nodes:
-            if node and node.not_isolated() and node.is_infected() and node.day_of_isolation == curr_day:
-                city.infected -= 1
-                city.isolated += 1
-                node.status = 'isolated'
+        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
+        for node in inf_sample:
+            isolate_node(city, node)
 
     # Isolate the infected people as well as their first level contacts
     elif level == 'level1':
-        for node in city.nodes:
-            if node and node.not_isolated() and node.day_of_isolation == curr_day and node.is_infected():
-                node.status = 'isolated'
-                city.infected -= 1
-                city.isolated += 1
-                for sub_nodes_ptr in node.edge_dict.keys():
-                    node = city.nodes[sub_nodes_ptr]
-                    if node and node.not_isolated() and node.is_infected():
-                        city.infected -= 1
-                        city.isolated += 1
-                        node.status = 'isolated'
+        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
+        for node in inf_sample:
+            isolate_node(city, node)
+            for sub_nodes_ptr in node.edge_dict.keys():
+                snode = city.nodes[sub_nodes_ptr]
+                if snode and snode.not_isolated() and snode.is_infected():
+                    isolate_node(city, snode)
 
     # Isolate upto 3 levels
     elif level == 'level3':
-        inf_sample = [node for node in city.nodes if node.is_infected() and node.not_isolated()]
+        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
 
         # init depth variable and run a simple bfs
         depth = 3
         bfs_queue = deque()
         for node in inf_sample:
-            if not node.visited: bfs_queue.append(node)
+            if not node.visited and node.not_isolated(): bfs_queue.append(node)
             node.visited = True
-            node.status = 'isolated'
-            city.infected -= 1
-            city.isolated += 1
+            isolate_node(city, node)
             
             while bfs_queue and depth:
                 u = bfs_queue.popleft()
@@ -163,10 +167,7 @@ def purge_city(city, curr_day, level):
                     trg_node = city.nodes[trg_node_ptr]
                     if not trg_node.visited and trg_node.not_isolated():
                         bfs_queue.append(trg_node)
-                        if trg_node.is_infected(): city.infected -= 1
-                        else: city.healthy -= 1
-                        city.isolated += 1
-                        trg_node.status = 'isolated'
+                        isolate_node(city, trg_node)
                         trg_node.visited = True
 
                 # after 1 level, decrease depth by one
@@ -175,12 +176,13 @@ def purge_city(city, curr_day, level):
 
     elif level == 'total_isolation':
         # Run bfs and isolate all the nodes that should be isolated
-        inf_sample = [node for node in city.nodes if node.is_infected() and node.not_isolated()]
+        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
 
         bfs_queue = deque()
         for node in inf_sample:
-            if not node.visited: bfs_queue.append(node)
+            if not node.visited and node.not_isolated(): bfs_queue.append(node)
             node.visited = True
+            isolate_node(city, node)
 
             while bfs_queue:
                 u = bfs_queue.popleft()
@@ -188,10 +190,7 @@ def purge_city(city, curr_day, level):
                     trg_node = city.nodes[trg_node_ptr]
                     if not trg_node.visited and trg_node.not_isolated():
                         bfs_queue.append(trg_node)
-                        if trg_node.is_infected(): city.infected -= 1
-                        else: city.healthy -= 1
-                        city.isolated += 1
-                        trg_node.status = 'isolated'
+                        isolate_node(city, trg_node)
                         trg_node.visited = True
 
     print(curr_day, city.healthy, city.infected, city.isolated)
