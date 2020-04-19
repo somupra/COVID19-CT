@@ -38,7 +38,7 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
 
             if idx % (population * tstamp_per_day) == 0 and idx != 0 or idx == (population*tstamp_per_day*days) - 1:
                 # One day has been processed, update the graph based on this and free the memory
-                print("Updating graph for day ",idx % (population * days) ,"...")
+                print("Updating graph for day ",idx // (population * tstamp_per_day) ,"...")
                 graph.update_graph(register)
                 print("Graph updated")
 
@@ -47,8 +47,8 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
                 print("Register purged")
 
                 # Run the infection in the city for this day
-                print("Infecting the city for day ",idx % (population * days), "...")
-                infect_city(city=graph, curr_day=idx % (population * days))
+                print("Infecting the city for day ",idx // (population * tstamp_per_day), "...")
+                infect_city(city=graph, curr_day=idx // (population * tstamp_per_day))
                 print("City infected successfully")
 
                 # Purge the city for this day
