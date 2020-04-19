@@ -204,7 +204,9 @@ def purge_city(city, curr_day, level):
                         bfs_queue.append(trg_node)
                         isolate_node(city, trg_node)
                         trg_node.visited = True
-
+    f = open("results.txt", "a")
+    f.write("{0},{1},{2},{3}\n".format(curr_day, city.healthy, city.infected, city.isolated))
+    f.close()
     print(curr_day, city.healthy, city.infected, city.isolated)
 
 
