@@ -124,7 +124,7 @@ def infect_node(city, node):
 def infect_city(city, curr_day):
     if curr_day in [0, 1, 2, 3, 4]:
         existing_nodes = [node for node in city.nodes if node and node.not_isolated()]
-        infected_sample = random.choices(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
+        infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
         for node in infected_sample:
             node.day_of_isolation = curr_day
             node.inf_prob = 1
