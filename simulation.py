@@ -24,11 +24,23 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
         register.append([])
 
     print("Register Initialized")
-    print("cleaning output file ...")
-    f = open("results.txt", "w")
+    print("cleaning output files ...")
+    f = open("results_level0.txt", "w")
     f.write("")
     f.close()
 
+    f = open("results_level1.txt", "w")
+    f.write("")
+    f.close()
+
+    f = open("results_level3.txt", "w")
+    f.write("")
+    f.close()
+
+    f = open("results_total_isolation.txt", "w")
+    f.write("")
+    f.close()
+    
     """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
     print("starting to read by chunks, block size =", C_SIZE)
     for chunk in pd.read_csv(path, chunksize = C_SIZE, header=None, names=['x', 'y']):
