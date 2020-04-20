@@ -146,6 +146,7 @@ def infect_city(city, curr_day):
 
 def isolate_node(city, node):
     if node.not_isolated():
+        print("Isolating ...", node, " current status: ", node.status)
         city.infected -= 1
         city.isolated += 1
         node.status = 'isolated'
@@ -171,7 +172,6 @@ def purge_city(city, curr_day, level):
 
     # Isolate upto 3 levels
     elif level == 'level3':
-        print("Isolating ...", inf_sample)
         # init depth variable and run a simple bfs
         depth = 3
         bfs_queue = deque()
