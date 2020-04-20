@@ -59,5 +59,6 @@ class Graph:
                     self.create_edge(p1, p2)
 
     def reset_visit(self):
-        for node in self.nodes: node.visited = False
+        for node in self.nodes: 
+            if node: node.visited = False
 

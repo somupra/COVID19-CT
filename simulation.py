@@ -107,6 +107,7 @@ def bfs(city, inf_node):
                     trg_node.day_of_isolation = min(u.day_of_isolation + 5, trg_node.day_of_isolation)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
+    print("bfs ended for node", inf_node)
 
 
 def bfs_infection_run(city, infected_sample=None, node=None):
