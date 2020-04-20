@@ -54,7 +54,7 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
 
                 # Purge the city for this day
                 print("purging city")
-                purge_city(city=graph, curr_day=idx % (population * days), level=algo_mode)
+                purge_city(city=graph, curr_day=idx // (population * days), level=algo_mode)
 
 def purge_register(register):
     """Purges the register, i.e. clears up all the lists and collects the garbage memory"""
