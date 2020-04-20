@@ -30,11 +30,11 @@ class Graph:
 
         if not self.nodes[p1["id"]]:
             # If p1 node has no contacts yet, init it, and add entry of p2 in its edge_dict
-            print(p1, p2)
+            # print(p1, p2)
             self.nodes[p1["id"]] = Node(id=p1["id"])
             self.nodes[p1["id"]].edge_dict[p2["id"]] = [(p2["time"], dist)]
         else:
-            print(p1, p2)
+            # print(p1, p2)
             if p2["id"] in self.nodes[p1["id"]].edge_dict.keys():
                 self.nodes[p1["id"]].edge_dict[p2["id"]].append((p2["time"], dist))
             else:
