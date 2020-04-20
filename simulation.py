@@ -23,8 +23,12 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
         register.append([])
 
     print("Register Initialized")
-    """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
+    print("cleaning output file ...")
+    f = open("results.txt", "w")
+    f.write("")
+    f.close()
 
+    """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
     print("starting to read by chunks, block size =", C_SIZE)
     for chunk in pd.read_csv(path, chunksize = C_SIZE, header=None, names=['x', 'y']):
         for idx, entry in chunk.iterrows():
@@ -65,9 +69,6 @@ def purge_register(register):
 def attach_prob(src, trg):
     """Attaches the probability to the nodes wrt the source they got infected [assumed to be]. For now, analysis done on the basis of number of contacts the source made with the target node. [NOTE]: The target node might infect the source node as well, as well as, there might be more than one source infecting the same target, we add up the probabilities, and finally trim it if it exceeds 1."""
     contact_times = len(trg.edge_dict[src.id])
-
-    if src.is_infected():
-        trg.inf_prob += src.inf_prob / 10
 
     if contact_times < 3 and contact_times >= 1:
         trg.inf_prob += src.inf_prob/100
@@ -152,15 +153,15 @@ def isolate_node(city, node):
 def purge_city(city, curr_day, level):
     """Purges the infected city. If infection is found as well as the individual is not isolated till date."""
 
+    inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
+    print(level, " isolation for: ", inf_sample)
     # Isolate only infected people who show infection on curr_day
     if level == 'level0':
-        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
         for node in inf_sample:
             isolate_node(city, node)
 
     # Isolate the infected people as well as their first level contacts
     elif level == 'level1':
-        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
         for node in inf_sample:
             isolate_node(city, node)
             for sub_nodes_ptr in node.edge_dict.keys():
@@ -170,8 +171,7 @@ def purge_city(city, curr_day, level):
 
     # Isolate upto 3 levels
     elif level == 'level3':
-        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
-
+        print("Isolating ...", inf_sample)
         # init depth variable and run a simple bfs
         depth = 3
         bfs_queue = deque()
@@ -195,8 +195,6 @@ def purge_city(city, curr_day, level):
 
     elif level == 'total_isolation':
         # Run bfs and isolate all the nodes that should be isolated
-        inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
-
         bfs_queue = deque()
         for node in inf_sample:
             if not node.visited and node.not_isolated(): bfs_queue.append(node)
