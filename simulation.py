@@ -67,22 +67,22 @@ def attach_prob(src, trg):
     contact_times = len(trg.edge_dict[src.id])
 
     if src.is_infected():
-        trg.inf_prob += src.inf_prob / 2
+        trg.inf_prob += src.inf_prob / 10
 
     if contact_times < 3 and contact_times >= 1:
-        trg.inf_prob += src.inf_prob/10
+        trg.inf_prob += src.inf_prob/100
 
     elif contact_times < 7 and contact_times >=3:
-        trg.inf_prob += src.inf_prob/6
+        trg.inf_prob += src.inf_prob/60
 
     elif contact_times < 10 and contact_times >= 7:
-        trg.inf_prob += src.inf_prob/4
+        trg.inf_prob += src.inf_prob/40
 
     elif contact_times < 14 and contact_times >= 10:
-        trg.inf_prob += src.inf_prob/2.5
+        trg.inf_prob += src.inf_prob/10
 
     else:
-        trg.inf_prob += src.inf_prob/1.5
+        trg.inf_prob += src.inf_prob/5
 
     # Trimming the excess probability to restrict it exceeding 1.
     trg.inf_prob = max(1, trg.inf_prob)
