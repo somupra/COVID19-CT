@@ -94,7 +94,7 @@ def bfs(city, inf_node):
     if not inf_node.visited and inf_node.not_isolated(): bfs_queue.append(inf_node)
     inf_node.visited = True
 
-    print("Inside the bfs visit function", inf_node)
+    # print("Inside the bfs visit function", inf_node)
 
     while bfs_queue:
         u = bfs_queue.popleft()
@@ -107,7 +107,7 @@ def bfs(city, inf_node):
                     trg_node.day_of_isolation = min(u.day_of_isolation + 5, trg_node.day_of_isolation)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
-    print("bfs ended for node", inf_node)
+    # print("bfs ended for node", inf_node)
 
 
 def bfs_infection_run(city, infected_sample=None, node=None):
@@ -127,10 +127,10 @@ def infect_node(city, node):
 def infect_city(city, curr_day):
     if curr_day in [0, 1, 2, 3, 4]:
         existing_nodes = [node for node in city.nodes if node and node.not_isolated()]
-        print(city.nodes)
-        print(existing_nodes)
+        # print(city.nodes)
+        # print(existing_nodes)
         infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
-        print(infected_sample)
+        # print(infected_sample)
         for node in infected_sample:
             node.day_of_isolation = curr_day
             node.inf_prob = 1
@@ -214,7 +214,7 @@ def purge_city(city, curr_day, level):
     f = open("results.txt", "a")
     f.write("{0},{1},{2},{3}\n".format(curr_day, city.healthy, city.infected, city.isolated))
     f.close()
-    print(curr_day, city.healthy, city.infected, city.isolated)
+    print("day: ", curr_day, " healthy: ", city.healthy, " infected: ", city.infected, " isolated: ", city.isolated)
 
 
             
