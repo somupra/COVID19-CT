@@ -1,6 +1,7 @@
 from itertools import combinations
 from geopy.distance import geodesic
 from params import RADIUS
+import numpy as np
 class Node:
     def __init__(self, id):
         self.id = id
@@ -9,11 +10,23 @@ class Node:
         self.day_of_isolation = 1000
         self.inf_prob = 0
         self.edge_dict = {}
+    
     def not_isolated(self):
         return self.status != 'isolated'
+    
+    def mark_infection(self, curr_day):
+        """Marks infection for node, given the probability of infection."""
+        # check if the node has infection or not
+        choices = ["infected", "healthy"]
+        status = np.random.choice(choices, 1, p=[self.inf_prob, 1 - self.inf_prob])
+        if status == 'infected':
+            self.status = 'infected'
+            self.inf_prob = 1
+            self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
+
 
     def is_infected(self):
-        return self.status == 'infected'
+        return self.status == "infected"
 
     def __str__(self):
 	    return "NODE: {0}".format(self.id)
@@ -23,8 +36,14 @@ class Graph:
         self.nodes = [None]*population
         self.healthy = population
         self.infected = 0
-        self.isolated = 0
+        self.isolated_healthy = 0
+        self.isolated_infected = 0
     
+    def mark_infected_population(self, curr_day):
+        to_mark = [node for node in self.nodes if node and not node.is_infected() and node.not_isolated()]
+        for node in to_mark:
+            node.mark_infection(curr_day)
+
     def create_edge(self, p1, p2):
         dist = geodesic((p1['y'], p1['x']), (p2['y'], p2['x'])).meters
 
@@ -50,7 +69,6 @@ class Graph:
                 self.nodes[p2["id"]].edge_dict[p1["id"]].append((p1["time"], dist))
             else:
                 self.nodes[p2["id"]].edge_dict[p1["id"]] = [(p1["time"], dist)]
-
 
     def update_graph(self, register):
         for t_stamp in register:
