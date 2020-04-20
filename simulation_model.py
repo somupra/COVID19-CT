@@ -10,9 +10,11 @@ class Node:
         self.inf_prob = 0
         self.edge_dict = {}
     def not_isolated(self):
-        return self.status == 'isolated'
+        return self.status != 'isolated'
+
     def is_infected(self):
         return self.status == 'infected'
+
     def __str__(self):
 	    return "NODE: {0}".format(self.id)
 
