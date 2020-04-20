@@ -67,7 +67,7 @@ def purge_register(register):
         timestamp.clear()
     gc.collect()
 
-def bfs(city, inf_node):
+def bfs(city, inf_node, curr_day):
     bfs_queue = deque()
     if not inf_node.visited and inf_node.not_isolated(): bfs_queue.append(inf_node)
     inf_node.visited = True
@@ -82,18 +82,18 @@ def bfs(city, inf_node):
                 attach_prob(u, trg_node)
                 if trg_node.inf_prob > ISOLATION_PROB_THRESHOLD:
                     infect_node(city, trg_node)
-                    trg_node.day_of_isolation = min(u.day_of_isolation + 5, trg_node.day_of_isolation)
+                    trg_node.day_of_isolation = min(curr_day + 5, trg_node.day_of_isolation)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
     # print("bfs ended for node", inf_node)
 
 
-def bfs_infection_run(city, infected_sample=None, node=None):
+def bfs_infection_run(city, infected_sample=None, node=None, curr_day):
     if infected_sample:
         for inf_node in infected_sample:
-            bfs(city, inf_node)
+            bfs(city, inf_node, curr_day)
     else:
-        bfs(city, node)
+        bfs(city, node, curr_day)
 
 def infect_node(city, node):
     if not node.is_infected():
@@ -114,7 +114,7 @@ def infect_city(city, curr_day):
             node.inf_prob = 1
             infect_node(city, node)
 
-        bfs_infection_run(city=city, infected_sample=infected_sample)
+        bfs_infection_run(city=city, infected_sample=infected_sample, curr_day=curr_day)
     else:
         for node in city.nodes:
             if node and node.not_isolated():
