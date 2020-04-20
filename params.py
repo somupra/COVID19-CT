@@ -1,5 +1,5 @@
 # Radius of contact: in which 2 people will be assumed to have a contact
-RADIUS = 100
+RADIUS = 30
 
 # Initially, for the 5 days, sample of population which is to be infected
 INITIAL_INF_POP = 100
@@ -8,4 +8,4 @@ INITIAL_INF_POP = 100
 C_SIZE = 10 ** 8
 
 # Threshold of probabitlity of infection above which a node would be isolated
-ISOLATION_PROB_THRESHOLD = 0.6
+ISOLATION_PROB_THRESHOLD = 0.75
