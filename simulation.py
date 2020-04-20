@@ -2,6 +2,7 @@ from params import INITIAL_INF_POP, C_SIZE, ISOLATION_PROB_THRESHOLD
 from geopy.distance import geodesic
 from simulation_model import Node, Graph
 from collections import deque
+from prob_attach import attach_prob
 import pandas as pd
 import gc
 import itertools
@@ -65,30 +66,6 @@ def purge_register(register):
     for timestamp in register:
         timestamp.clear()
     gc.collect()
-
-def attach_prob(src, trg):
-    """Attaches the probability to the nodes wrt the source they got infected [assumed to be]. For now, analysis done on the basis of number of contacts the source made with the target node. [NOTE]: The target node might infect the source node as well, as well as, there might be more than one source infecting the same target, we add up the probabilities, and finally trim it if it exceeds 1."""
-    contact_times = len(trg.edge_dict[src.id])
-
-    if contact_times < 3 and contact_times >= 1:
-        trg.inf_prob += src.inf_prob/200
-
-    elif contact_times < 7 and contact_times >=3:
-        trg.inf_prob += src.inf_prob/100
-
-    elif contact_times < 10 and contact_times >= 7:
-        trg.inf_prob += src.inf_prob/60
-
-    elif contact_times < 14 and contact_times >= 10:
-        trg.inf_prob += src.inf_prob/20
-
-    else:
-        trg.inf_prob += src.inf_prob/10
-
-    # Trimming the excess probability to restrict it exceeding 1.
-    trg.inf_prob = min(1, trg.inf_prob)
-
-
 
 def bfs(city, inf_node):
     bfs_queue = deque()
