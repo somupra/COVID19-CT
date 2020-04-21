@@ -3,7 +3,7 @@ def attach_prob(src, trg, curr_day):
     print("attaching prob for day ", curr_day)
     contact_times = len([contact for contact in trg.edge_dict[src.id] if (contact[0] // 1000) == curr_day])
     print([contact for contact in trg.edge_dict[src.id]])
-    print([contact for contact in trg.edge_dict[src.id] if (contact[0] // 1000) == curr_day])
+    print([contact for contact in trg.edge_dict[src.id] if ((contact[0] // 1000) + 1) == curr_day])
     print("contacts between:", src, " -- ", trg, " : ", contact_times)
 
     if contact_times < 3 and contact_times >= 1:
