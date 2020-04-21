@@ -46,9 +46,9 @@ def infect_city(city, curr_day):
         for node in city.nodes:
             if node and node.not_isolated():
                 # check if the node is infected and current day is the day of symp. showing for it
-                if node.is_infected() and node.day_of_isolation == curr_day:
-                    city.healthy -= 1
-                    city.infected += 1
+                # if node.is_infected() and node.day_of_isolation == curr_day:
+                #     city.healthy -= 1
+                #     city.infected += 1
                     
                 bfs_infection_run(city=city, node=node, curr_day=curr_day)
     

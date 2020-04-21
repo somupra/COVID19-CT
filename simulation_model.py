@@ -26,7 +26,6 @@ class Node:
                 self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
                 city.healthy -= 1
                 city.infected += 1
-            print("infected people in city: ", city.infected)
 
 
 
