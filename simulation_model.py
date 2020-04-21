@@ -78,6 +78,7 @@ class Graph:
             for p1, p2 in combinations(t_stamp, 2):
                 if geodesic((p1['y'], p1['x']), (p2['y'], p2['x'])).meters <= RADIUS:
                     self.create_edge(p1, p2)
+            i += 1
 
     def reset_visit(self):
         for node in self.nodes: 
