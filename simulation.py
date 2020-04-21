@@ -28,19 +28,8 @@ def simulate(path, population=17000, days=180, tstamp_per_day=240, algo_mode='le
 
     print("Register Initialized")
     print("cleaning output files ...")
-    f = open("results_level0.txt", "w")
-    f.write("")
-    f.close()
 
-    f = open("results_level1.txt", "w")
-    f.write("")
-    f.close()
-
-    f = open("results_level3.txt", "w")
-    f.write("")
-    f.close()
-
-    f = open("results_total_isolation.txt", "w")
+    f = open("results_{0}.txt".format(algo_mode), "w")
     f.write("")
     f.close()
     
