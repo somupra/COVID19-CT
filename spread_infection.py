@@ -14,7 +14,7 @@ def bfs(city, inf_node, curr_day):
         u = bfs_queue.popleft()
         for trg_node_ptr in u.edge_dict.keys():
             trg_node = city.nodes[trg_node_ptr]
-            if not trg_node.visited and trg_node.not_isolated() and not trg_node.is_infected():
+            if not trg_node.visited and trg_node.not_isolated():
                 attach_prob(u, trg_node, curr_day)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
@@ -30,7 +30,7 @@ def bfs_infection_run(city, curr_day, infected_sample=None, node=None):
 """Select nodes which aren't isolated yet and mark them infected for the day -- for 5 days, then afterwards, run a BFS from each node which is not isolated yet."""
 def infect_city(city, curr_day):
     if curr_day in [0, 1, 2, 3, 4]:
-        existing_nodes = [node for node in city.nodes if node and node.not_isolated()]
+        existing_nodes = [node for node in city.nodes if node and node.not_isolated() and not node.is_infected()]
 
         infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
 
