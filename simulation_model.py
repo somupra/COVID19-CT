@@ -23,13 +23,14 @@ class Node:
             self.status = 'infected'
             self.inf_prob = 1
             self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
+        print("Marking on day ", curr_day, " : ", self.status)
 
 
     def is_infected(self):
         return self.status == "infected"
 
     def __str__(self):
-	    return "NODE: {0}".format(self.id)
+	    return "NODE: {0}, STAT: {1}".format(self.id, self.status)
 
 class Graph:
     def __init__(self, population):
