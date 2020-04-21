@@ -24,11 +24,10 @@ class Node:
                 self.status = 'infected'
                 self.inf_prob = 1
                 self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
-            city.healthy -= 1
-            city.infected += 1
-            print("Marking on day ", curr_day, " : ", self.status)
+                city.healthy -= 1
+                city.infected += 1
             print("infected people in city: ", city.infected)
-            
+
 
 
     def is_infected(self):
