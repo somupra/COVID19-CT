@@ -14,16 +14,21 @@ class Node:
     def not_isolated(self):
         return self.status != 'isolated'
     
-    def mark_infection(self, curr_day):
+    def mark_infection(self, curr_day, city):
         """Marks infection for node, given the probability of infection."""
         # check if the node has infection or not
-        choices = ["infected", "healthy"]
-        status = np.random.choice(choices, 1, p=[self.inf_prob, 1 - self.inf_prob])
-        if status == 'infected':
-            self.status = 'infected'
-            self.inf_prob = 1
-            self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
-        print("Marking on day ", curr_day, " : ", self.status)
+        if not self.is_infected():
+            choices = ["infected", "healthy"]
+            status = np.random.choice(choices, 1, p=[self.inf_prob, 1 - self.inf_prob])
+            if status == 'infected':
+                self.status = 'infected'
+                self.inf_prob = 1
+                self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
+            city.healthy -= 1
+            city.infected += 1
+            print("Marking on day ", curr_day, " : ", self.status)
+            print("infected people in city: ", city.infected)
+            
 
 
     def is_infected(self):
@@ -43,7 +48,7 @@ class Graph:
     def mark_infected_population(self, curr_day):
         to_mark = [node for node in self.nodes if node and not node.is_infected() and node.not_isolated()]
         for node in to_mark:
-            node.mark_infection(curr_day)
+            node.mark_infection(curr_day=curr_day, city=self)
 
     def create_edge(self, p1, p2):
         dist = geodesic((p1['y'], p1['x']), (p2['y'], p2['x'])).meters
