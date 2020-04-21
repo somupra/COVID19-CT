@@ -72,7 +72,9 @@ class Graph:
                 self.nodes[p2["id"]].edge_dict[p1["id"]] = [(p1["time"], dist)]
 
     def update_graph(self, register):
+        i = 1
         for t_stamp in register:
+            print("processing timestamp ", i, "...")
             for p1, p2 in combinations(t_stamp, 2):
                 if geodesic((p1['y'], p1['x']), (p2['y'], p2['x'])).meters <= RADIUS:
                     self.create_edge(p1, p2)
