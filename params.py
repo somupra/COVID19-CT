@@ -5,5 +5,5 @@ RADIUS = 20
 INITIAL_INF_POP = 1
 
 # Chunk size whcih needs to be set while reading the CSV file
-C_SIZE = 200000
+C_SIZE = 10 ** 7
 
