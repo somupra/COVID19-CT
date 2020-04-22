@@ -74,9 +74,9 @@ def purge_city(city, curr_day, level):
                         trg_node.visited = True
 
         f = open("results_total_isolation.txt", "a")
-    if(curr_day < 20):
+    if(curr_day < 25):
         f.write("{0},{1},{2},{3},".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
-    elif(curr_day == 20):
+    elif(curr_day == 25):
         f.write("{0},{1},{2},{3}\n".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
     f.close()
     

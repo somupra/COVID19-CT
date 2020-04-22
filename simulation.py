@@ -5,7 +5,7 @@ from collections import deque
 from prob_attach import attach_prob
 from purge import purge_city
 from spread_infection import infect_city
-from driver import init_cond
+# from driver import init_cond
 import pandas as pd
 import gc
 import itertools
@@ -72,7 +72,7 @@ def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_pe
                 
                 
                 curr_day = idx // (population * tstamp_per_day)
-                if(curr_day == 21):
+                if(curr_day == 26):
                     return 0
 
 def purge_register(register):
@@ -84,3 +84,5 @@ def purge_register(register):
 def random_sim(init_cond, path, n_times=10, algo_mode='level0'):
     for i in range(n_times):
         simulate(init_cond, path=path, run=i, algo_mode=algo_mode, population=100, days=80, tstamp_per_day=40)
+        print("Initial_cond: ")
+        print(init_cond)

@@ -1,10 +1,8 @@
 from collections import deque
 from prob_attach import attach_prob
 from params import INITIAL_INF_POP
-from driver import init_cond
+# from driver import init_cond
 import random
-
-init_cond = dict()
 
 """Runs BFS on city with surely infected_nodes as root, covers only those nodes which are healthy and not isolated yet"""
 def bfs(city, inf_node, curr_day):
