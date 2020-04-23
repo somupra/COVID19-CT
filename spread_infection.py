@@ -3,6 +3,7 @@ from prob_attach import attach_prob
 from params import INITIAL_INF_POP
 # from driver import init_cond
 import random
+from simulation_model import Node
 
 """Runs BFS on city with surely infected_nodes as root, covers only those nodes which are healthy and not isolated yet"""
 def bfs(city, inf_node, curr_day):
@@ -35,9 +36,20 @@ def infect_city(init_cond, city, curr_day, algo_mode, run):
             infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
             if(curr_day == 1):
                 init_cond.update({run: []})
-            init_cond[run].append(infected_sample)
+            init_cond[run].append([])
+            for init_node in infected_sample:
+                init_cond[run][curr_day-1].append(init_node.id)
+
+            # init_cond[run].append(infected_sample)
         else:
-            infected_sample = init_cond[run][curr_day-1]
+            infected_sample = []
+            for init_node_id in init_cond[run][curr_day-1]:
+                print("Node-id is: ", init_node_id)
+                if not city.nodes[init_node_id]:
+                    city.nodes[init_node_id] = Node(init_node_id)
+                infected_sample.append(city.nodes[init_node_id])
+            
+            print("Infected sample: ", infected_sample)
 
         # infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
 
@@ -47,7 +59,8 @@ def infect_city(init_cond, city, curr_day, algo_mode, run):
             node.status = 'infected'
             city.healthy -= 1
             city.infected += 1
-
+        print("Initial_cond: ")
+        print(init_cond)
         bfs_infection_run(city=city, infected_sample=infected_sample, curr_day=curr_day)
     else:
         for node in city.nodes:

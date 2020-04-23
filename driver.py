@@ -15,5 +15,5 @@ init_cond = dict()
 algo_modes = ['level0', 'level1', 'level3']
 
 for mode in algo_modes:
-    random_sim(init_cond, path="test3.csv", n_times=10, algo_mode= mode)
+    random_sim(init_cond, path="output1.csv", n_times=10, algo_mode= mode)
 

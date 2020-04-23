@@ -72,7 +72,7 @@ def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_pe
                 
                 
                 curr_day = idx // (population * tstamp_per_day)
-                if(curr_day == 26):
+                if(curr_day == 30):
                     return 0
 
 def purge_register(register):

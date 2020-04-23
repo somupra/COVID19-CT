@@ -64,7 +64,7 @@ def final_plot(path, N=100, n_days=80):
     for spine in ('top', 'right', 'bottom', 'left'):
         ax.spines[spine].set_visible(False)
     plt.title('{0} Isolation'.format(path))
-    pylab.savefig('l0plot.png')
+    pylab.savefig('{0}.png'.format(path))
     # plt.title('Level 0 Isolation')
     # pylab.savefig('level0_isoln.png')
     plt.show()
