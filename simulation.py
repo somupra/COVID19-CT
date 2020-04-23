@@ -29,10 +29,10 @@ def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_pe
 
     print("Register Initialized")
     print("cleaning output files ...")
-    if(run==0):
-        f = open("results_{0}.txt".format(algo_mode), "w")
-        f.write("")
-        f.close()
+
+    f = open("results_{0}.txt".format(algo_mode), "w")
+    f.write("")
+    f.close()
     
     """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
     print("starting to read by chunks, block size =", C_SIZE)
