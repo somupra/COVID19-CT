@@ -24,13 +24,15 @@ def final_plot(path, N=100, n_days=80):
 
     df = pd.read_csv(path, header=None)
     cols = n_days*4
+    day = 1
     
     for i in range(cols):
         curr_mean = df[i].mean()
         curr_dev = df[i].std()
 
         if(i%4 == 0):
-            t.append(i+1)
+            t.append(day)
+            day += 1
             H.append((float(curr_mean))/N)
             H_Err.append((float(curr_dev))/N)
         elif (i%4==1):
