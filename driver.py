@@ -87,7 +87,7 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
                     print("Updated initial data successfully: ", initial_data)
                     return initial_data
 
-def comparison_simulation():
+def comparison_simulation(_):
     print("Setting Initial Data...")
     init_cond = get_initial_data(path="output1.csv", INITIAL_INF_POP=INITIAL_INF_POP, days=80, tstamp_per_day=40, population=100)
     output = []
@@ -103,7 +103,27 @@ def comparison_simulation():
     print("Final output:", output[1])
     # print("Starting Simulations for level3...") 
     # simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
+    return output
+comparison_simulation(1)
 
-comparison_simulation()
 # with Pool(8) as process:
-#     print(process.map(comparison_simulation,[]))
+#     final_result = process.map(comparison_simulation,[1]*8)
+#     print(final_result)
+#     algo_modes = ['level0', 'level1', 'level3']
+#     # clearing output files
+#     for mode in algo_modes:
+#         f = open("results_{0}.txt".format(mode), "w")
+#         f.write("")
+#         f.close()
+#     for run in range(8):
+#         iterator = 0
+#         for mode in algo_modes:
+#             f = open("results_{0}.txt".format(mode), "a")
+#             curr_res = final_result[run][iterator]
+#             for i in range(len(curr_res)):
+#                 if(i<(len(curr_res)-1)): 
+#                     f.write("{0},{1},{2},{3},".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))
+#                 else:
+#                     f.write("{0},{1},{2},{3}\n".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))   
+#             f.close()
+#             iterator += 1
