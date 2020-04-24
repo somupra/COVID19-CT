@@ -32,7 +32,7 @@ def bfs_infection_run(city, curr_day, infected_sample=None, node=None):
 def infect_city(init_cond, city, curr_day, algo_mode):
     # init_cond = [[1, 3], [5, 6], [...]] data for infecting the population for first 5 days
 
-    if curr_day in [0, 1, 2, 3, 4]:
+    if curr_day in [1, 2, 3, 4, 5]:
         infected_sample = []
         for init_node_id in init_cond[curr_day-1]:
             print("Node-id is: ", init_node_id)
@@ -62,6 +62,5 @@ def infect_city(init_cond, city, curr_day, algo_mode):
                 bfs_infection_run(city=city, node=node, curr_day=curr_day)
     
     city.reset_visit()
-    return init_cond
 
 

@@ -16,7 +16,7 @@ def bfs_for_random_sampling(city, node, contact_set):
     # inf_node = node
     depth = 3
     bfs_queue = deque()
-    if not node.visited and node.not_isolated(): bfs_queue.append(node)
+    if not node.visited and node.not_isolated() and node not in contact_set: bfs_queue.append(node)
     node.visited = True
     contact_set.add(node)
 
@@ -98,9 +98,11 @@ def comparison_simulation():
 
     simulate(init_cond, output[0], path="output1.csv", algo_mode='level0', population=100, days=80, tstamp_per_day=40)
     print("Final output:", output[0])
+    print("Starting Simulations for level 1...") 
     simulate(init_cond, output[1], path="output1.csv", algo_mode='level1', population=100, days=80, tstamp_per_day=40)
     print("Final output:", output[1])
-    simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
+    # print("Starting Simulations for level3...") 
+    # simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
 
 # with Pool(8) as process:
 #     print(process.map(comparison_simulation,[]))
