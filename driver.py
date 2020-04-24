@@ -71,6 +71,7 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
                 print("Register purged")
 
                 result = []
+                print("Updating initial data...")
 
                 for _ in range(INITIAL_INF_POP):
                     choice_array = [node for node in graph.nodes if node and node not in contact_set]
@@ -80,7 +81,10 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
 
                 initial_data.append(result)
                 curr_day = idx // (population * tstamp_per_day)
+                print("Initial data updated for day :", curr_day, "initial_data is: ", initial_data)
+                
                 if(curr_day == days):
+                    print("Updated initial data successfully: ", initial_data)
                     return initial_data
 
 def comparison_simulation():
