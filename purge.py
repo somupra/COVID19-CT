@@ -79,7 +79,7 @@ def purge_city(output, city, curr_day, level):
     # elif(curr_day == 7):
     #     f.write("{0},{1},{2},{3}\n".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
     # f.close()
-    output.append([city.healthy, city.infected, city.isolated_healthy, city.isolated_infected])
+    output.append((city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
     
     print("day: ", curr_day, " healthy: ", city.healthy, " infected: ", city.infected, " isolated but healthy: ", city.isolated_healthy, " isolated and infected: ", city.isolated_infected)
 

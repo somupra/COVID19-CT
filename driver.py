@@ -5,7 +5,7 @@ from geopy.distance import geodesic
 from simulation_model import Node, Graph
 from collections import deque
 from purge import purge_city
-# from driver import init_cond
+from multiprocessing import Pool
 import pandas as pd
 import gc
 import itertools
@@ -88,15 +88,19 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
                     return initial_data
 
 def comparison_simulation():
-    print("Choosing Initial Conditions...")
-    init_cond = get_initial_data(path="output1.txt", INITIAL_INF_POP=INITIAL_INF_POP, days=80, tstamp_per_day=40, population=100)
+    print("Setting Initial Data...")
+    init_cond = get_initial_data(path="output1.csv", INITIAL_INF_POP=INITIAL_INF_POP, days=80, tstamp_per_day=40, population=100)
     output = []
     for _ in range(3):
         output.append([])
     
     print("Starting Simulations...")
-    
-    simulate(init_cond, output[0], path="output1.txt", algo_mode='level0', population=100, days=80, tstamp_per_day=40)
-    simulate(init_cond, output[1], path="output1.txt", algo_mode='level1', population=100, days=80, tstamp_per_day=40)
-    simulate(init_cond, output[2], path="output1.txt", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
 
+    simulate(init_cond, output[0], path="output1.csv", algo_mode='level0', population=100, days=80, tstamp_per_day=40)
+    print("Final output:", output[0])
+    simulate(init_cond, output[1], path="output1.csv", algo_mode='level1', population=100, days=80, tstamp_per_day=40)
+    print("Final output:", output[1])
+    simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
+
+# with Pool(8) as process:
+#     print(process.map(comparison_simulation,[]))
