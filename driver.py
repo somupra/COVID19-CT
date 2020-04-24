@@ -73,7 +73,7 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
                 result = []
 
                 for _ in range(INITIAL_INF_POP):
-                    choice_array = [node for node in graph.nodes if node not in contact_set]
+                    choice_array = [node for node in graph.nodes if node and node not in contact_set]
                     init_node = random.choice(choice_array)
                     bfs_for_random_sampling(graph, init_node, contact_set)
                     result.append(init_node.id)
