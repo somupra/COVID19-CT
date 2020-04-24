@@ -13,7 +13,7 @@ import random
 
 """For the purposes of this simulation, the data is assumed to set with timestamp internval of 5 minutes. So, for 20hrs per day, this gives 240 datasnaps per person, per day."""
 
-def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_per_day=40):
+def simulate(init_cond, output, path, algo_mode, population=100, days=80, tstamp_per_day=40):
     """path: path to csv file, population: Population of the city simulation must run onto, days: Number of days which simulation must be run, tstamp_per_day: per day per person number of location entries in the csv file, algo_mode: level0, level1, level3, total_isolation [Depth upto which infected population must be isolated]"""
     
     # create a graph
@@ -29,10 +29,10 @@ def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_pe
 
     print("Register Initialized")
     print("cleaning output files ...")
-    if(run==0):
-        f = open("results_{0}.txt".format(algo_mode), "w")
-        f.write("")
-        f.close()
+    # if(run==0):
+    #     f = open("results_{0}.txt".format(algo_mode), "w")
+    #     f.write("")
+    #     f.close()
     
     """Format of CSV file is important, it is assumed that CSV file is organized in a way that all the entries per person per day is buckted first, and so on."""
     print("starting to read by chunks, block size =", C_SIZE)
@@ -63,12 +63,12 @@ def simulate(init_cond, path, run, algo_mode, population=100, days=80, tstamp_pe
 
                 # Run the infection in the city for this day
                 print("Infecting the city for day ",idx // (population * tstamp_per_day), "...")
-                infect_city(init_cond, city=graph, curr_day=idx // (population * tstamp_per_day), algo_mode=algo_mode, run=run)
+                infect_city(init_cond, city=graph, curr_day=idx // (population * tstamp_per_day), algo_mode=algo_mode)
                 print("City infected successfully")
 
                 # Purge the city for this day
                 print("purging city")
-                purge_city(city=graph, curr_day=idx // (population * tstamp_per_day), level=algo_mode)
+                purge_city(output, city=graph, curr_day=idx // (population * tstamp_per_day), level=algo_mode)
                 
                 
                 curr_day = idx // (population * tstamp_per_day)
@@ -81,8 +81,8 @@ def purge_register(register):
         timestamp.clear()
     gc.collect()
 
-def random_sim(init_cond, path, n_times=10, algo_mode='level0'):
-    for i in range(n_times):
-        simulate(init_cond, path=path, run=i, algo_mode=algo_mode, population=100, days=80, tstamp_per_day=40)
-        print("Initial_cond: ")
-        print(init_cond)
+# def random_sim(init_cond, path, n_times=10, algo_mode='level0'):
+#     for i in range(n_times):
+#         simulate(init_cond, path=path, run=i, algo_mode=algo_mode, population=100, days=80, tstamp_per_day=40)
+#         print("Initial_cond: ")
+#         print(init_cond)

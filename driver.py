@@ -1,19 +1,94 @@
-from simulation import simulate
-from simulation import random_sim
+from simulation import simulate, purge_register
 from plot import final_plot
+from params import INITIAL_INF_POP, C_SIZE
+from geopy.distance import geodesic
+from simulation_model import Node, Graph
+from collections import deque
+from purge import purge_city
+# from driver import init_cond
+import pandas as pd
+import gc
+import itertools
+import random
 
-# simulate(path="test2.csv", population=100, days=80, tstamp_per_day=40, algo_mode='level3')
-# final_plot(path='results_level0.txt', N=200)
 
-# simulate(path="../openpflow/test1.csv", population=100, days=80, tstamp_per_day=40, algo_mode='level1')
-# # final_plot(path='results_level1.txt', N=200)
+def bfs_for_random_sampling(city, node, contact_set):
+    # inf_node = node
+    depth = 3
+    bfs_queue = deque()
+    if not node.visited and node.not_isolated(): bfs_queue.append(node)
+    node.visited = True
+    contact_set.add(node)
 
-# simulate(path="../openpflow/test1.csv", population=100, days=80, tstamp_per_day=40, algo_mode='level3')
-# # final_plot(path='results_level3.txt', N=200)
+    while bfs_queue and depth:
+        u = bfs_queue.popleft()
+        for trg_node_ptr in u.edge_dict.keys():
+            trg_node = city.nodes[trg_node_ptr]
+            if not trg_node.visited:
+                bfs_queue.append(trg_node)
+                contact_set.add(trg_node)
+                trg_node.visited = True
 
-init_cond = dict()
-algo_modes = ['level0', 'level1', 'level3']
+        # after 1 level, decrease depth by 1.
+        depth -= 1
 
-for mode in algo_modes:
-    random_sim(init_cond, path="output1.csv", n_times=10, algo_mode= mode)
+
+def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
+
+    # create a graph
+    print("Creating city model ...")
+    graph = Graph(population)
+    print("City model created successfully ...")
+
+    # read file by chunks and store data for a day in a register_init_data
+    print("Initializing Register ...")
+    register_init_data = []
+    for _ in range(tstamp_per_day):
+        register_init_data.append([])
+
+    print("Register Initialized")
+    initial_data = []
+    contact_set = set()
+
+    for chunk in pd.read_csv(path, chunksize = C_SIZE, header=None, names=['x', 'y']):
+        for idx, entry in chunk.iterrows():
+            # Take the input in the register_init_data
+            register_init_data[idx % tstamp_per_day].append({
+                "id": (idx // tstamp_per_day) % population, 
+                "time": (idx // (population*tstamp_per_day)*1000) + idx % tstamp_per_day,
+                "x": entry["x"],
+                "y": entry["y"]
+            })
+            if idx % (population * tstamp_per_day) == 0 and idx != 0 or idx == (population*tstamp_per_day*days) - 1:
+              
+                # One day has been processed, update the graph based on this and free the memory
+                print("Updating graph for day ",idx // (population * tstamp_per_day) ,"...")
+                graph.update_graph(register_init_data)
+                print("Graph updated")
+
+                # Clean the register_init_data, get it ready for the next day
+                purge_register(register_init_data)
+                print("Register purged")
+
+                result = []
+
+                for _ in range(INITIAL_INF_POP):
+                    choice_array = [node for node in graph.nodes if node not in contact_set]
+                    init_node = random.choice(choice_array)
+                    bfs_for_random_sampling(graph, init_node, contact_set)
+                    result.append(init_node.id)
+
+                initial_data.append(result)
+                curr_day = idx // (population * tstamp_per_day)
+                if(curr_day == days):
+                    return initial_data
+
+def comparison_simulation():
+    init_cond = get_initial_data(path="output1.txt", INITIAL_INF_POP=INITIAL_INF_POP, days=5, tstamp_per_day=40, population=100)
+    output = []
+    for _ in range(3):
+        output.append([])
+    simulate(init_cond, output[0], path="output1.txt", algo_mode='level0', population=100, days=80, tstamp_per_day=40)
+    simulate(init_cond, output[1], path="output1.txt", algo_mode='level1', population=100, days=80, tstamp_per_day=40)
+    simulate(init_cond, output[2], path="output1.txt", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
 
