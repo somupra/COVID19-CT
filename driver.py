@@ -104,5 +104,6 @@ def comparison_simulation():
     # print("Starting Simulations for level3...") 
     # simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
 
+comparison_simulation()
 # with Pool(8) as process:
 #     print(process.map(comparison_simulation,[]))
