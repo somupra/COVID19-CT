@@ -83,12 +83,12 @@ def get_initial_data(path, INITIAL_INF_POP, days, tstamp_per_day, population):
                 curr_day = idx // (population * tstamp_per_day)
                 print("Initial data updated for day :", curr_day, "initial_data is: ", initial_data)
                 
-                if(curr_day == days):
+                if(curr_day == 5):
                     print("Updated initial data successfully: ", initial_data)
                     return initial_data
 
 def comparison_simulation():
-    init_cond = get_initial_data(path="output1.txt", INITIAL_INF_POP=INITIAL_INF_POP, days=5, tstamp_per_day=40, population=100)
+    init_cond = get_initial_data(path="output1.txt", INITIAL_INF_POP=INITIAL_INF_POP, days=80, tstamp_per_day=40, population=100)
     output = []
     for _ in range(3):
         output.append([])
