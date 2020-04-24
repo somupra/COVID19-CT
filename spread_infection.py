@@ -36,8 +36,6 @@ def infect_city(init_cond, city, curr_day, algo_mode):
         infected_sample = []
         for init_node_id in init_cond[curr_day-1]:
             print("Node-id is: ", init_node_id)
-            if not city.nodes[init_node_id]:
-                city.nodes[init_node_id] = Node(init_node_id)
             infected_sample.append(city.nodes[init_node_id])
             
         print("Infected sample: ", infected_sample)
