@@ -65,6 +65,6 @@ def final_plot(path, N=100, n_days=80, algo_mode='level0'):
         ax.spines[spine].set_visible(False)
     plt.title('{0} Isolation'.format(algo_mode))
     pylab.savefig('graph_{0}.png'.format(algo_mode))
-    plt.show()
+    # plt.show()
 
 # final_plot(path="plotfile.txt", N=100, n_days=80)
