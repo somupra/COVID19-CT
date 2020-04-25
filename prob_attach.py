@@ -8,19 +8,19 @@ def attach_prob(src, trg, curr_day):
 
     if contact_times:
         if contact_times < 5 and contact_times >= 1:
-            trg.inf_prob += src.inf_prob/40
+            trg.inf_prob += src.inf_prob/10
 
         elif contact_times < 10 and contact_times >=5:
-            trg.inf_prob += src.inf_prob/15
+            trg.inf_prob += src.inf_prob/8
 
         elif contact_times < 16 and contact_times >= 10:
-            trg.inf_prob += src.inf_prob/8
+            trg.inf_prob += src.inf_prob/5
 
         elif contact_times < 20 and contact_times >= 16:
             trg.inf_prob += src.inf_prob/3
 
         else:
-            trg.inf_prob += src.inf_prob/1.5
+            trg.inf_prob += src.inf_prob
 
     # Trimming the excess probability to restrict it exceeding 1.
     trg.inf_prob = min(1, trg.inf_prob)

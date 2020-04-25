@@ -29,27 +29,16 @@ def bfs_infection_run(city, curr_day, infected_sample=None, node=None):
         bfs(city, node, curr_day)
 
 """Select nodes which aren't isolated yet and mark them infected for the day -- for 5 days, then afterwards, run a BFS from each node which is not isolated yet."""
-def infect_city(init_cond, city, curr_day, algo_mode, run):
-    if curr_day in [0, 1, 2, 3, 4]:
-        existing_nodes = [node for node in city.nodes if node and node.not_isolated() and not node.is_infected()]
-        if(algo_mode == 'level0'):
-            infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
-            if(curr_day == 1):
-                init_cond.update({run: []})
-            init_cond[run].append([])
-            for init_node in infected_sample:
-                init_cond[run][curr_day-1].append(init_node.id)
+def infect_city(init_cond, city, curr_day, algo_mode):
+    # init_cond = [[1, 3], [5, 6], [...]] data for infecting the population for first 5 days
 
-            # init_cond[run].append(infected_sample)
-        else:
-            infected_sample = []
-            for init_node_id in init_cond[run][curr_day-1]:
-                print("Node-id is: ", init_node_id)
-                if not city.nodes[init_node_id]:
-                    city.nodes[init_node_id] = Node(init_node_id)
-                infected_sample.append(city.nodes[init_node_id])
+    if curr_day in [1, 2, 3, 4, 5]:
+        infected_sample = []
+        for init_node_id in init_cond[curr_day-1]:
+            print("Node-id is: ", init_node_id)
+            infected_sample.append(city.nodes[init_node_id])
             
-            print("Infected sample: ", infected_sample)
+        print("Infected sample: ", infected_sample)
 
         # infected_sample = random.sample(existing_nodes, k=min(INITIAL_INF_POP, len(existing_nodes)))
 
@@ -73,6 +62,5 @@ def infect_city(init_cond, city, curr_day, algo_mode, run):
                 bfs_infection_run(city=city, node=node, curr_day=curr_day)
     
     city.reset_visit()
-    return init_cond
 
 

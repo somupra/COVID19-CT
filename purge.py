@@ -10,7 +10,7 @@ def isolate_node(city, node, mode='infected'):
             city.isolated_healthy += 1
         node.status = 'isolated'
 
-def purge_city(city, curr_day, level):
+def purge_city(output, city, curr_day, level):
     """Purges the infected city. If infection is found as well as the individual is not isolated till date."""
 
     inf_sample = [node for node in city.nodes if node and node.is_infected() and node.not_isolated() and node.day_of_isolation == curr_day]
@@ -20,7 +20,7 @@ def purge_city(city, curr_day, level):
     if level == 'level0':
         for node in inf_sample:
             isolate_node(city=city, node=node)
-        f = open("results_level0.txt", "a")
+        # f = open("results_level0.txt", "a")
 
     # Isolate the infected people as well as their first level contacts
     elif level == 'level1':
@@ -30,7 +30,7 @@ def purge_city(city, curr_day, level):
                 snode = city.nodes[sub_nodes_ptr]
                 if snode and snode.not_isolated():
                     isolate_node(city=city, node=snode, mode=snode.status)
-        f = open("results_level1.txt", "a")
+        # f = open("results_level1.txt", "a")
 
     # Isolate upto 3 levels
     elif level == 'level3':
@@ -54,7 +54,7 @@ def purge_city(city, curr_day, level):
                 # after 1 level, decrease depth by one
                 depth -= 1
         
-        f = open("results_level3.txt", "a")
+        # f = open("results_level3.txt", "a")
 
     elif level == 'total_isolation':
         # Run bfs and isolate all the nodes that should be isolated
@@ -73,12 +73,13 @@ def purge_city(city, curr_day, level):
                         isolate_node(city=city, node=trg_node, mode=trg_node.status)
                         trg_node.visited = True
 
-        f = open("results_total_isolation.txt", "a")
-    if(curr_day < 30):
-        f.write("{0},{1},{2},{3},".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
-    elif(curr_day == 30):
-        f.write("{0},{1},{2},{3}\n".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
-    f.close()
+        # f = open("results_total_isolation.txt", "a")
+    # if(curr_day < 7):
+    #     f.write("{0},{1},{2},{3},".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
+    # elif(curr_day == 7):
+    #     f.write("{0},{1},{2},{3}\n".format(city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
+    # f.close()
+    output.append((city.healthy, city.infected, city.isolated_healthy, city.isolated_infected))
     
     print("day: ", curr_day, " healthy: ", city.healthy, " infected: ", city.infected, " isolated but healthy: ", city.isolated_healthy, " isolated and infected: ", city.isolated_infected)
 
