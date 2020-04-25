@@ -14,6 +14,9 @@ import random
 import sys
 
 
+# simulate(path="../openpflow/test2.csv", population=1000, days=100, tstamp_per_day=80, algo_mode='level0')
+# final_plot(path='results_level0.txt', N=200)
+
 def bfs_for_random_sampling(city, node, contact_set):
     # inf_node = node
     depth = 3

@@ -29,6 +29,7 @@ def simulate(init_cond, output, path, algo_mode, population=100, days=80, tstamp
 
     print("Register Initialized")
     print("cleaning output files ...")
+
     # if(run==0):
     #     f = open("results_{0}.txt".format(algo_mode), "w")
     #     f.write("")
