@@ -16,6 +16,7 @@ def bfs(city, inf_node, curr_day):
         for trg_node_ptr in u.edge_dict.keys():
             trg_node = city.nodes[trg_node_ptr]
             if not trg_node.visited and trg_node.not_isolated():
+                print("Current day before prob: ", curr_day)
                 attach_prob(u, trg_node, curr_day)
                 bfs_queue.append(trg_node)
                 trg_node.visited = True
