@@ -6,10 +6,12 @@ from simulation_model import Node, Graph
 from collections import deque
 from purge import purge_city
 from multiprocessing import Pool
+from plot import final_plot
 import pandas as pd
 import gc
 import itertools
 import random
+import sys
 
 
 def bfs_for_random_sampling(city, node, contact_set):
@@ -104,26 +106,31 @@ def comparison_simulation(_):
     # print("Starting Simulations for level3...") 
     # simulate(init_cond, output[2], path="output1.csv", algo_mode='level3', population=100, days=80, tstamp_per_day=40)
     return output
-comparison_simulation(1)
 
-# with Pool(8) as process:
-#     final_result = process.map(comparison_simulation,[1]*8)
-#     print(final_result)
-#     algo_modes = ['level0', 'level1', 'level3']
-#     # clearing output files
-#     for mode in algo_modes:
-#         f = open("results_{0}.txt".format(mode), "w")
-#         f.write("")
-#         f.close()
-#     for run in range(8):
-#         iterator = 0
-#         for mode in algo_modes:
-#             f = open("results_{0}.txt".format(mode), "a")
-#             curr_res = final_result[run][iterator]
-#             for i in range(len(curr_res)):
-#                 if(i<(len(curr_res)-1)): 
-#                     f.write("{0},{1},{2},{3},".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))
-#                 else:
-#                     f.write("{0},{1},{2},{3}\n".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))   
-#             f.close()
-#             iterator += 1
+# sys.stdout = open("test.txt", "w")
+# comparison_simulation(1)
+# sys.stdout.close()
+
+cores = 4
+with Pool(cores) as process:
+    final_result = process.map(comparison_simulation,[1]*cores)
+    print(final_result)
+    algo_modes = ['level0', 'level1', 'level3']
+    # clearing output files
+    for mode in algo_modes:
+        f = open("results_{0}.txt".format(mode), "w")
+        f.write("")
+        f.close()
+    for run in range(cores):
+        iterator = 0
+        for mode in algo_modes:
+            f = open("results_{0}.txt".format(mode), "a")
+            curr_res = final_result[run][iterator]
+            for i in range(len(curr_res)):
+                if(i<(len(curr_res)-1)): 
+                    f.write("{0},{1},{2},{3},".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))
+                else:
+                    f.write("{0},{1},{2},{3}\n".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))   
+            f.close()
+            iterator += 1
+    

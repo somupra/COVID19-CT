@@ -69,4 +69,4 @@ def final_plot(path, N=100, n_days=80):
     # pylab.savefig('level0_isoln.png')
     plt.show()
 
-final_plot(path="plotfile.txt", N=100, n_days=80)
+# final_plot(path="plotfile.txt", N=100, n_days=80)

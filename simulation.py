@@ -66,6 +66,15 @@ def simulate(init_cond, output, path, algo_mode, population=100, days=80, tstamp
                 infect_city(init_cond, city=graph, curr_day=idx // (population * tstamp_per_day), algo_mode=algo_mode)
                 print("City infected successfully")
 
+                # marking the infected nodes after infecting the city
+                print("Marking the infected nodes for the day, this won't neccessarily increase the current infection count")
+                graph.mark_infected_population(curr_day=idx // (population * tstamp_per_day))
+
+                # print("printing edge dicts of all the nodes in the graph:")
+                # for node in graph.nodes:
+                #     if node:
+                #         print("Node --", node.id, "--", node.edge_dict)
+
                 # Purge the city for this day
                 print("purging city")
                 purge_city(output, city=graph, curr_day=idx // (population * tstamp_per_day), level=algo_mode)
