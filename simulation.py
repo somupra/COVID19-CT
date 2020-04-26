@@ -77,7 +77,7 @@ def simulate(init_cond, output, path, algo_mode, population=100, days=80, tstamp
                 purge_city(output, city=graph, curr_day=idx // (population * tstamp_per_day), level=algo_mode, isolated_nodes=isolated_nodes)
                 
                 curr_day = idx // (population * tstamp_per_day)
-                if(curr_day == 7):
+                if(curr_day == 40):
                     return 0
 
 def purge_register(register):
