@@ -114,28 +114,28 @@ print(cores)
 with Pool(cores) as process:
     final_result = process.map(comparison_simulation,[1]*cores)
 
-print(final_result)
-algo_modes = ['level0', 'level1', 'level3']
+    print(final_result)
+    algo_modes = ['level0', 'level1', 'level3']
 
-# clearing output files
-for mode in algo_modes:
-    f = open("results_{0}.txt".format(mode), "w")
-    f.write("")
-    f.close()
-
-for run in range(cores):
-    iterator = 0
+    # clearing output files
     for mode in algo_modes:
-        f = open("results_{0}.txt".format(mode), "a")
-        curr_res = final_result[run][iterator]
-        for i in range(len(curr_res)):
-            if(i<(len(curr_res)-1)): 
-                f.write("{0},{1},{2},{3},".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))
-            else:
-                f.write("{0},{1},{2},{3}\n".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))   
+        f = open("results_{0}.txt".format(mode), "w")
+        f.write("")
         f.close()
-        iterator += 1
 
-for mode in algo_modes:
-    final_plot(path="results_{0}.txt".format(mode), N=100, n_days=40, algo_mode=mode)
+    for run in range(cores):
+        iterator = 0
+        for mode in algo_modes:
+            f = open("results_{0}.txt".format(mode), "a")
+            curr_res = final_result[run][iterator]
+            for i in range(len(curr_res)):
+                if(i<(len(curr_res)-1)): 
+                    f.write("{0},{1},{2},{3},".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))
+                else:
+                    f.write("{0},{1},{2},{3}\n".format(curr_res[i][0], curr_res[i][1], curr_res[i][2], curr_res[i][3]))   
+            f.close()
+            iterator += 1
+
+    for mode in algo_modes:
+        final_plot(path="results_{0}.txt".format(mode), N=100, n_days=40, algo_mode=mode)
     

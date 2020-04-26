@@ -5,7 +5,7 @@ def attach_prob(src, trg, curr_day, city):
     print("Day {0} :: attaching prob for source ({1}, {2}) and ({3}, {4})".format(curr_day, src, src.status, trg, trg.status))
     print("reversed edge dict is: ", reversed(trg.edge_dict[src.id]))
 
-    if src.inf_start_time and not trg.is_infected():
+    if src.inf_start_time is not None and not trg.is_infected():
         for contact in reversed(trg.edge_dict[src.id]):
             if contact[0] < src.inf_start_time:
                 break
