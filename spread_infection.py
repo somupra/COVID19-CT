@@ -7,6 +7,7 @@ from simulation_model import Node
 
 """Runs BFS on city with surely infected_nodes as root, covers only those nodes which are healthy and not isolated yet"""
 def bfs(city, inf_node, curr_day):
+    print("running bfs for node: {0} -- day {1}".format(inf_node, curr_day))
     bfs_queue = deque()
     if not inf_node.visited and inf_node.not_isolated(): 
         bfs_queue.append(inf_node)
@@ -20,11 +21,11 @@ def bfs(city, inf_node, curr_day):
                 if ((contact[0] // 1000) + 1) == curr_day:
                     curr_day_contact_keys.append(key)
                     break
+        print("contact keys to be processed are: ", curr_day_contact_keys)
         
         for trg_node_ptr in curr_day_contact_keys:
             trg_node = city.nodes[trg_node_ptr]
             if not trg_node.visited and trg_node.not_isolated():
-                print("Current day before prob: ", curr_day)
                 attach_prob(u, trg_node, curr_day, city)
                 if trg_node.is_infected(): bfs_queue.append(trg_node)
                 trg_node.visited = True
@@ -54,7 +55,7 @@ def infect_city(init_cond, city, curr_day, algo_mode):
         for node in infected_sample:
             node.day_of_isolation = curr_day
             node.inf_prob = 1
-            node.inf_start_time = (curr_day * 1000)
+            node.inf_start_time = (curr_day * 1000) - 1000
             node.status = 'infected'
             city.healthy -= 1
             city.infected += 1

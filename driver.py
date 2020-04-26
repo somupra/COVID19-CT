@@ -110,6 +110,7 @@ def comparison_simulation(_):
 
 cores = cpu_count()
 print(cores)
+# cores = 4
 with Pool(cores) as process:
     final_result = process.map(comparison_simulation,[1]*cores)
 
@@ -121,6 +122,7 @@ for mode in algo_modes:
     f = open("results_{0}.txt".format(mode), "w")
     f.write("")
     f.close()
+
 for run in range(cores):
     iterator = 0
     for mode in algo_modes:
