@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pylab
 import csv
 
-def final_plot(path, N=100, n_days=80):
+def final_plot(path, N=100, n_days=80, algo_mode='level0'):
     """ path= path of file to read the set of points from; N=Total population; n_days=no. of days"""
 
     # Time in days, t.
@@ -63,10 +63,8 @@ def final_plot(path, N=100, n_days=80):
     legend.get_frame().set_alpha(0.5)
     for spine in ('top', 'right', 'bottom', 'left'):
         ax.spines[spine].set_visible(False)
-    plt.title('{0} Isolation'.format(path))
-    pylab.savefig('{0}.png'.format(path))
-    # plt.title('Level 0 Isolation')
-    # pylab.savefig('level0_isoln.png')
-    plt.show()
+    plt.title('{0} Isolation'.format(algo_mode))
+    pylab.savefig('graph_{0}.png'.format(algo_mode))
+    # plt.show()
 
-final_plot(path="plotfile.txt", N=100, n_days=80)
+# final_plot(path="plotfile.txt", N=100, n_days=80)
