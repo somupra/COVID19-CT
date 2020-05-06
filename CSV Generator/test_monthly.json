@@ -1,0 +1,995 @@
+{
+  "timelineObjects" : [ {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "address" : "",
+        "semanticType" : "TYPE_HOME",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 45.120014
+      },
+      "duration" : {
+        "startTimestampMs" : "1585899128216",
+        "endTimestampMs" : "1586079212033"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265045740,
+      "centerLngE7" : 802340688,
+      "visitConfidence" : 86,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265123388,
+        "longitudeE7" : 802329000,
+        "placeId" : "ChIJcb6oxAE3nDkRNoTDq4Do-zo",
+        "locationConfidence" : 34.785553
+      }, {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 17.142975
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 2.8899026
+      }, {
+        "latitudeE7" : 265030628,
+        "longitudeE7" : 802357985,
+        "placeId" : "ChIJmwbVjqs3nDkR-FffQTV3f7k",
+        "locationConfidence" : 0.03779861
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265123388,
+        "longitudeE7" : 802329000,
+        "placeId" : "ChIJcb6oxAE3nDkRNoTDq4Do-zo",
+        "address" : "Kalyanpur\nKanpur, Uttar Pradesh 208016\nIndia",
+        "name" : "Indian Institute of Technology Kanpur",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 43.90334
+      },
+      "duration" : {
+        "startTimestampMs" : "1586079212033",
+        "endTimestampMs" : "1586112661889"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265046966,
+      "centerLngE7" : 802339353,
+      "visitConfidence" : 83,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "semanticType" : "TYPE_HOME",
+        "locationConfidence" : 39.910038
+      }, {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 13.4978285
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 2.5857024
+      }, {
+        "latitudeE7" : 265030628,
+        "longitudeE7" : 802357985,
+        "placeId" : "ChIJmwbVjqs3nDkR-FffQTV3f7k",
+        "locationConfidence" : 0.064289846
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "address" : "",
+        "semanticType" : "TYPE_HOME",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 58.443577
+      },
+      "duration" : {
+        "startTimestampMs" : "1586112661889",
+        "endTimestampMs" : "1587192839028"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265046414,
+      "centerLngE7" : 802341086,
+      "visitConfidence" : 85,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265123388,
+        "longitudeE7" : 802329000,
+        "placeId" : "ChIJcb6oxAE3nDkRNoTDq4Do-zo",
+        "locationConfidence" : 30.287752
+      }, {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 9.896465
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 1.3329836
+      }, {
+        "latitudeE7" : 265030628,
+        "longitudeE7" : 802357985,
+        "placeId" : "ChIJmwbVjqs3nDkR-FffQTV3f7k",
+        "locationConfidence" : 0.020903744
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 265045696,
+        "longitudeE7" : 802341105,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "endLocation" : {
+        "latitudeE7" : 264814700,
+        "longitudeE7" : 803021952,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "duration" : {
+        "startTimestampMs" : "1587192839028",
+        "endTimestampMs" : "1587193983171"
+      },
+      "distance" : 7246,
+      "activityType" : "MOTORCYCLING",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 63.182270526885986
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 30.83549737930298
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 2.190418168902397
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.889185793697834
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.9864660911262035
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.29996412340551615
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.23769037798047066
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.17137115355581045
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.13165988493710756
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.05204136250540614
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.01357219589408487
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.008456254727207124
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.0012960755157109816
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 8.596295515417296E-5
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 3.192990050138178E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 265045700,
+          "lngE7" : 802341079
+        }, {
+          "latE7" : 264849071,
+          "lngE7" : 802956924
+        }, {
+          "latE7" : 264814949,
+          "lngE7" : 803022155
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 264792263,
+        "longitudeE7" : 803160441,
+        "placeId" : "ChIJ__-vVmM4nDkRB1njYZimDVc",
+        "address" : "113/103 A\nSwaroop Nagar\nKhalasi Line, Swaroop Nagar\nKanpur, Uttar Pradesh 208002\nIndia",
+        "name" : "Royal Cancer Institute and Research Centre",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 59.36785
+      },
+      "duration" : {
+        "startTimestampMs" : "1587193983171",
+        "endTimestampMs" : "1587201765567"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 264792640,
+          "longitudeE7" : 803160280,
+          "placeId" : "ChIJ95EXVGM4nDkRpKSUPxH58HY",
+          "address" : "113/104 - A\nSwaroop Nagar\nopposite Motijheel\nKhalasi Line, Swaroop Nagar\nKanpur, Uttar Pradesh 208002\nIndia",
+          "name" : "Regency Renal Sciences Centre",
+          "sourceInfo" : {
+            "deviceTag" : -815279018
+          },
+          "locationConfidence" : 33.16134
+        },
+        "duration" : {
+          "startTimestampMs" : "1587197218502",
+          "endTimestampMs" : "1587201765567"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 264789000,
+        "centerLngE7" : 803158843,
+        "visitConfidence" : 77,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 264761285,
+          "longitudeE7" : 803139924,
+          "placeId" : "ChIJt-drPns4nDkRLaBcrZlt1E8",
+          "locationConfidence" : 17.201633
+        }, {
+          "latitudeE7" : 264770117,
+          "longitudeE7" : 803169842,
+          "placeId" : "ChIJYRH8knw4nDkRTDRwHC9Qm70",
+          "locationConfidence" : 5.328745
+        }, {
+          "latitudeE7" : 264756448,
+          "longitudeE7" : 803166615,
+          "placeId" : "ChIJi4SdA3w4nDkRlX72qd7S_oI",
+          "locationConfidence" : 1.6582868
+        }, {
+          "latitudeE7" : 264795488,
+          "longitudeE7" : 803176406,
+          "placeId" : "ChIJOUUIDmg4nDkRnOZFhJuTB2o",
+          "locationConfidence" : 1.3676333
+        }, {
+          "latitudeE7" : 264761983,
+          "longitudeE7" : 803148769,
+          "placeId" : "ChIJncQCd3s4nDkR633L10Puxo8",
+          "locationConfidence" : 0.7222409
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 264789000,
+      "centerLngE7" : 803158843,
+      "visitConfidence" : 77,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 264761285,
+        "longitudeE7" : 803139924,
+        "placeId" : "ChIJt-drPns4nDkRLaBcrZlt1E8",
+        "locationConfidence" : 27.397055
+      }, {
+        "latitudeE7" : 264770117,
+        "longitudeE7" : 803169842,
+        "placeId" : "ChIJYRH8knw4nDkRTDRwHC9Qm70",
+        "locationConfidence" : 6.4894156
+      }, {
+        "latitudeE7" : 264756448,
+        "longitudeE7" : 803166615,
+        "placeId" : "ChIJi4SdA3w4nDkRlX72qd7S_oI",
+        "locationConfidence" : 2.0150077
+      }, {
+        "latitudeE7" : 264795488,
+        "longitudeE7" : 803176406,
+        "placeId" : "ChIJOUUIDmg4nDkRnOZFhJuTB2o",
+        "locationConfidence" : 1.4256599
+      }, {
+        "latitudeE7" : 264761983,
+        "longitudeE7" : 803148769,
+        "placeId" : "ChIJncQCd3s4nDkR633L10Puxo8",
+        "locationConfidence" : 1.1421813
+      }, {
+        "latitudeE7" : 264791203,
+        "longitudeE7" : 803178506,
+        "placeId" : "ChIJGU5XLWM4nDkRfUS0cu-EEdo",
+        "locationConfidence" : 0.6710549
+      }, {
+        "latitudeE7" : 264803029,
+        "longitudeE7" : 803166861,
+        "placeId" : "ChIJyaTjCQA5nDkRoJ-nqpntP24",
+        "locationConfidence" : 0.5979313
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 264788419,
+        "longitudeE7" : 803159159,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "endLocation" : {
+        "latitudeE7" : 265053370,
+        "longitudeE7" : 802336161,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "duration" : {
+        "startTimestampMs" : "1587201765567",
+        "endTimestampMs" : "1587203238549"
+      },
+      "distance" : 8704,
+      "activityType" : "MOTORCYCLING",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 68.16039085388184
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 25.60320794582367
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 2.3174000903964043
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.3044730760157108
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 1.1703895404934883
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.5981685128062963
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.28034201823174953
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.2079944359138608
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.1859486917965114
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.08753089350648224
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.055470759980380535
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.024997253785841167
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.003415911487536505
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.7609170299692778E-4
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 9.023679581332544E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 264790363,
+          "lngE7" : 803159027
+        }, {
+          "latE7" : 264848480,
+          "lngE7" : 802956542
+        }, {
+          "latE7" : 265053405,
+          "lngE7" : 802333755
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265051896,
+        "longitudeE7" : 802338540,
+        "placeId" : "ChIJBQAAAAE3nDkRFGxhq1Dz5t8",
+        "address" : "Indian Institute of Technology Kanpur\nFifth Ave\nKalyanpur\nKanpur, Uttar Pradesh 208016\nIndia",
+        "name" : "IIT Health Centre",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 39.34257
+      },
+      "duration" : {
+        "startTimestampMs" : "1587203238549",
+        "endTimestampMs" : "1587222096045"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265047135,
+      "centerLngE7" : 802339100,
+      "visitConfidence" : 79,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "semanticType" : "TYPE_HOME",
+        "locationConfidence" : 28.129034
+      }, {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 9.213957
+      }, {
+        "latitudeE7" : 265074635,
+        "longitudeE7" : 802334547,
+        "placeId" : "ChIJf8p1vao3nDkRsUq1lzBRv1Y",
+        "locationConfidence" : 5.3170137
+      }, {
+        "latitudeE7" : 265051160,
+        "longitudeE7" : 802317743,
+        "placeId" : "ChIJF5fi1VQ2nDkRlIuyIqTy0kU",
+        "locationConfidence" : 4.156155
+      }, {
+        "latitudeE7" : 265060621,
+        "longitudeE7" : 802356648,
+        "placeId" : "ChIJCyMOTqo3nDkRiBLfiQt-yWw",
+        "locationConfidence" : 3.7202656
+      }, {
+        "latitudeE7" : 265049054,
+        "longitudeE7" : 802324903,
+        "placeId" : "ChIJ1QFJ01Q2nDkRdt6fjfsaKkw",
+        "locationConfidence" : 2.2939572
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 2.16984
+      }, {
+        "latitudeE7" : 265059308,
+        "longitudeE7" : 802338991,
+        "placeId" : "ChIJ5Q0Y5Ko3nDkRTPDizaLUh74",
+        "locationConfidence" : 1.6581595
+      }, {
+        "latitudeE7" : 265056250,
+        "longitudeE7" : 802335218,
+        "placeId" : "ChIJ7W7V36o3nDkRlpQK7W2ZeoY",
+        "locationConfidence" : 1.5223849
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "address" : "",
+        "semanticType" : "TYPE_HOME",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 42.96176
+      },
+      "duration" : {
+        "startTimestampMs" : "1587222096045",
+        "endTimestampMs" : "1587448925750"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265045608,
+      "centerLngE7" : 802339468,
+      "visitConfidence" : 84,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 20.207542
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 8.925727
+      }, {
+        "latitudeE7" : 265049054,
+        "longitudeE7" : 802324903,
+        "placeId" : "ChIJ1QFJ01Q2nDkRdt6fjfsaKkw",
+        "locationConfidence" : 6.1454363
+      }, {
+        "latitudeE7" : 265060621,
+        "longitudeE7" : 802356648,
+        "placeId" : "ChIJCyMOTqo3nDkRiBLfiQt-yWw",
+        "locationConfidence" : 5.131746
+      }, {
+        "latitudeE7" : 265051160,
+        "longitudeE7" : 802317743,
+        "placeId" : "ChIJF5fi1VQ2nDkRlIuyIqTy0kU",
+        "locationConfidence" : 4.139943
+      }, {
+        "latitudeE7" : 265053278,
+        "longitudeE7" : 802343968,
+        "placeId" : "ChIJB5hkAas3nDkRu7p1C5FRwFM",
+        "locationConfidence" : 3.3120098
+      }, {
+        "latitudeE7" : 265051896,
+        "longitudeE7" : 802338540,
+        "placeId" : "ChIJBQAAAAE3nDkRFGxhq1Dz5t8",
+        "locationConfidence" : 3.2309759
+      }, {
+        "latitudeE7" : 265059308,
+        "longitudeE7" : 802338991,
+        "placeId" : "ChIJ5Q0Y5Ko3nDkRTPDizaLUh74",
+        "locationConfidence" : 2.3660793
+      }, {
+        "latitudeE7" : 265056250,
+        "longitudeE7" : 802335218,
+        "placeId" : "ChIJ7W7V36o3nDkRlpQK7W2ZeoY",
+        "locationConfidence" : 1.6514809
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265051896,
+        "longitudeE7" : 802338540,
+        "placeId" : "ChIJBQAAAAE3nDkRFGxhq1Dz5t8",
+        "address" : "Indian Institute of Technology Kanpur\nFifth Ave\nKalyanpur\nKanpur, Uttar Pradesh 208016\nIndia",
+        "name" : "IIT Health Centre",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 68.258804
+      },
+      "duration" : {
+        "startTimestampMs" : "1587448925750",
+        "endTimestampMs" : "1587464070774"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265048000,
+      "centerLngE7" : 802336367,
+      "visitConfidence" : 83,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265060621,
+        "longitudeE7" : 802356648,
+        "placeId" : "ChIJCyMOTqo3nDkRiBLfiQt-yWw",
+        "locationConfidence" : 8.637302
+      }, {
+        "latitudeE7" : 265074635,
+        "longitudeE7" : 802334547,
+        "placeId" : "ChIJf8p1vao3nDkRsUq1lzBRv1Y",
+        "locationConfidence" : 5.4362683
+      }, {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "semanticType" : "TYPE_HOME",
+        "locationConfidence" : 3.6858506
+      }, {
+        "latitudeE7" : 265074884,
+        "longitudeE7" : 802347871,
+        "placeId" : "ChIJDWMXjKo3nDkRbSb8NiubYxE",
+        "locationConfidence" : 3.101312
+      }, {
+        "latitudeE7" : 265059308,
+        "longitudeE7" : 802338991,
+        "placeId" : "ChIJ5Q0Y5Ko3nDkRTPDizaLUh74",
+        "locationConfidence" : 2.5074444
+      }, {
+        "latitudeE7" : 265051160,
+        "longitudeE7" : 802317743,
+        "placeId" : "ChIJF5fi1VQ2nDkRlIuyIqTy0kU",
+        "locationConfidence" : 2.244564
+      }, {
+        "latitudeE7" : 265056250,
+        "longitudeE7" : 802335218,
+        "placeId" : "ChIJ7W7V36o3nDkRlpQK7W2ZeoY",
+        "locationConfidence" : 1.5185647
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 1.3693444
+      }, {
+        "latitudeE7" : 265043720,
+        "longitudeE7" : 802314685,
+        "placeId" : "ChIJvS56z1Q2nDkRBbs-zJNRMuw",
+        "locationConfidence" : 0.933122
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "address" : "",
+        "semanticType" : "TYPE_HOME",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 50.240604
+      },
+      "duration" : {
+        "startTimestampMs" : "1587464070774",
+        "endTimestampMs" : "1587547397074"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265045348,
+      "centerLngE7" : 802340871,
+      "visitConfidence" : 82,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 20.15561
+      }, {
+        "latitudeE7" : 265060621,
+        "longitudeE7" : 802356648,
+        "placeId" : "ChIJCyMOTqo3nDkRiBLfiQt-yWw",
+        "locationConfidence" : 8.243511
+      }, {
+        "latitudeE7" : 265051160,
+        "longitudeE7" : 802317743,
+        "placeId" : "ChIJF5fi1VQ2nDkRlIuyIqTy0kU",
+        "locationConfidence" : 5.65624
+      }, {
+        "latitudeE7" : 265049054,
+        "longitudeE7" : 802324903,
+        "placeId" : "ChIJ1QFJ01Q2nDkRdt6fjfsaKkw",
+        "locationConfidence" : 5.174681
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 2.3850439
+      }, {
+        "latitudeE7" : 265051896,
+        "longitudeE7" : 802338540,
+        "placeId" : "ChIJBQAAAAE3nDkRFGxhq1Dz5t8",
+        "locationConfidence" : 2.1842504
+      }, {
+        "latitudeE7" : 265059308,
+        "longitudeE7" : 802338991,
+        "placeId" : "ChIJ5Q0Y5Ko3nDkRTPDizaLUh74",
+        "locationConfidence" : 1.5690192
+      }, {
+        "latitudeE7" : 265053278,
+        "longitudeE7" : 802343968,
+        "placeId" : "ChIJB5hkAas3nDkRu7p1C5FRwFM",
+        "locationConfidence" : 1.495233
+      }, {
+        "latitudeE7" : 265056250,
+        "longitudeE7" : 802335218,
+        "placeId" : "ChIJ7W7V36o3nDkRlpQK7W2ZeoY",
+        "locationConfidence" : 1.0705926
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 265045225,
+        "longitudeE7" : 802341026,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "endLocation" : {
+        "latitudeE7" : 265121856,
+        "longitudeE7" : 802242476,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "duration" : {
+        "startTimestampMs" : "1587547397074",
+        "endTimestampMs" : "1587548872724"
+      },
+      "distance" : 1299,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 50.28263330459595
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 35.313791036605835
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 10.374102741479874
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 2.10347268730402
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.8945436216890812
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.6191183347254992
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.2244195668026805
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.05519562400877476
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.054044125135988
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.03877520503010601
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.03361758426763117
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0028733908038702793
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.002769742422970012
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 5.227376732364064E-4
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.2381333363009617E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 265045700,
+          "lngE7" : 802341003
+        }, {
+          "latE7" : 265118122,
+          "lngE7" : 802285766
+        }, {
+          "latE7" : 265121860,
+          "lngE7" : 802242584
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265122475,
+        "longitudeE7" : 802248988,
+        "placeId" : "ChIJdwxVa_k2nDkRCReBJtjJc28",
+        "address" : "62nd St\nIIT Kanpur, Kalyanpur\nKanpur, Uttar Pradesh 208016\nIndia",
+        "name" : "Visitors Hostel Extension",
+        "semanticType" : "TYPE_WORK",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 50.31926
+      },
+      "duration" : {
+        "startTimestampMs" : "1587548872724",
+        "endTimestampMs" : "1587551316629"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265121667,
+      "centerLngE7" : 802243200,
+      "visitConfidence" : 70,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265144695,
+        "longitudeE7" : 802236057,
+        "placeId" : "ChIJcxJzbf42nDkRj5RSgc68LaM",
+        "locationConfidence" : 15.061046
+      }, {
+        "latitudeE7" : 265122660,
+        "longitudeE7" : 802242920,
+        "placeId" : "ChIJ_7rccvk2nDkRzFRLICVN7eM",
+        "locationConfidence" : 14.536029
+      }, {
+        "latitudeE7" : 265120750,
+        "longitudeE7" : 802243339,
+        "placeId" : "ChIJRdoSa_k2nDkRYJrzZj-bXtk",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 10.821699
+      }, {
+        "latitudeE7" : 265114910,
+        "longitudeE7" : 802272668,
+        "placeId" : "ChIJHRSf2v42nDkRRrK4LNM2Bcw",
+        "locationConfidence" : 3.8835824
+      }, {
+        "latitudeE7" : 265106069,
+        "longitudeE7" : 802272202,
+        "placeId" : "ChIJ5dObKP82nDkRTRIwpze3Dng",
+        "locationConfidence" : 1.8856058
+      }, {
+        "latitudeE7" : 265132646,
+        "longitudeE7" : 802251807,
+        "placeId" : "ChIJp5FrZ_k2nDkRgEUNcj9pLgY",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 1.3343467
+      }, {
+        "latitudeE7" : 265121079,
+        "longitudeE7" : 802257460,
+        "placeId" : "ChIJQ9tDOPk2nDkRd3irrnyYZ-Y",
+        "locationConfidence" : 1.0389705
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 265135470,
+        "longitudeE7" : 802239332,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "endLocation" : {
+        "latitudeE7" : 265044944,
+        "longitudeE7" : 802340910,
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        }
+      },
+      "duration" : {
+        "startTimestampMs" : "1587551316629",
+        "endTimestampMs" : "1587552789926"
+      },
+      "distance" : 1426,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 48.959192633628845
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 29.428625106811523
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 16.32910966873169
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 2.7980200946331024
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 1.155124232172966
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.7568013854324818
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.3369571641087532
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.08616065606474876
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.07865017978474498
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.041625427547842264
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.02196003042627126
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.003569927503122017
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.0034104356018360704
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 5.485719611897366E-4
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.445053723931778E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 265135459,
+          "lngE7" : 802240219
+        }, {
+          "latE7" : 265104770,
+          "lngE7" : 802349472
+        }, {
+          "latE7" : 265045700,
+          "lngE7" : 802340927
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 265046177,
+        "longitudeE7" : 802340851,
+        "placeId" : "ChIJD-WCEas3nDkRAAAAAAAAAAA",
+        "address" : "",
+        "semanticType" : "TYPE_HOME",
+        "sourceInfo" : {
+          "deviceTag" : -815279018
+        },
+        "locationConfidence" : 49.690174
+      },
+      "duration" : {
+        "startTimestampMs" : "1587552789926",
+        "endTimestampMs" : "1587638455988"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 265045453,
+      "centerLngE7" : 802340305,
+      "visitConfidence" : 83,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 265044247,
+        "longitudeE7" : 802342008,
+        "placeId" : "ChIJLR-lDKs3nDkRE9Kt7OdYveE",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 16.974823
+      }, {
+        "latitudeE7" : 265060621,
+        "longitudeE7" : 802356648,
+        "placeId" : "ChIJCyMOTqo3nDkRiBLfiQt-yWw",
+        "locationConfidence" : 7.717706
+      }, {
+        "latitudeE7" : 265042568,
+        "longitudeE7" : 802347453,
+        "placeId" : "ChIJwxmuDKs3nDkRd4Tn6aGVn3Q",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 6.211344
+      }, {
+        "latitudeE7" : 265051160,
+        "longitudeE7" : 802317743,
+        "placeId" : "ChIJF5fi1VQ2nDkRlIuyIqTy0kU",
+        "locationConfidence" : 5.6385784
+      }, {
+        "latitudeE7" : 265049054,
+        "longitudeE7" : 802324903,
+        "placeId" : "ChIJ1QFJ01Q2nDkRdt6fjfsaKkw",
+        "locationConfidence" : 5.5616574
+      }, {
+        "latitudeE7" : 265051896,
+        "longitudeE7" : 802338540,
+        "placeId" : "ChIJBQAAAAE3nDkRFGxhq1Dz5t8",
+        "locationConfidence" : 2.087329
+      }, {
+        "latitudeE7" : 265053278,
+        "longitudeE7" : 802343968,
+        "placeId" : "ChIJB5hkAas3nDkRu7p1C5FRwFM",
+        "locationConfidence" : 1.5933117
+      }, {
+        "latitudeE7" : 265059308,
+        "longitudeE7" : 802338991,
+        "placeId" : "ChIJ5Q0Y5Ko3nDkRTPDizaLUh74",
+        "locationConfidence" : 1.5732435
+      }, {
+        "latitudeE7" : 265056250,
+        "longitudeE7" : 802335218,
+        "placeId" : "ChIJ7W7V36o3nDkRlpQK7W2ZeoY",
+        "locationConfidence" : 1.1457357
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  } ]
+}
