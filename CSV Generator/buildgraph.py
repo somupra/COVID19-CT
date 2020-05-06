@@ -1,8 +1,9 @@
 from geopy.distance import geodesic
 # from params import RADIUS
 import pandas as pd
+from datetime import datetime 
 
-RADIUS = 20
+RADIUS = 15
 
 class Node:
     def __init__(self, id):
@@ -60,7 +61,7 @@ def build_graph(path="results_static_data.csv"):
                             x_avg = average(entry['x'], interval[1][0])
                             y_avg = average(entry['y'], interval[1][1])
                             f = open("results.txt", "a")
-                            f.write("{0},{1},{2},{3},{4},{5},{6},{7}\n".format(entry['id'], node.id, x_avg, y_avg, time[0], time[1], confidence, dist))
+                            f.write("{0},{1},{2},{3},{4},{5},{6},{7}\n".format(entry['id'], node.id, x_avg, y_avg, datetime.fromtimestamp(time[0]/1e3), datetime.fromtimestamp(time[1]/1e3), confidence, dist))
                             f.close()
                             print("added edge between: ", node.id, entry['id'], " time interval: ", time)
 
@@ -74,7 +75,7 @@ def build_graph(path="results_static_data.csv"):
                             y_avg = average(entry['y'], interval[1][1])
 
                             f = open("results.txt", "a")
-                            f.write("{0},{1},{2},{3},{4},{5},{6},{7}\n".format(entry['id'], node.id, x_avg, y_avg, time[0], time[1], confidence, dist))
+                            f.write("{0},{1},{2},{3},{4},{5},{6},{7}\n".format(entry['id'], node.id, x_avg, y_avg, datetime.fromtimestamp(time[0]/1e3), datetime.fromtimestamp(time[1]/1e3), confidence, dist))
                             f.close()
                             print("added edge between: ", node.id, entry['id'], " time interval: ", time)
 
