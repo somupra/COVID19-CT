@@ -19,6 +19,7 @@ class Graph:
         self.nodes = {}
 
     def create_edge(self, p1_id, p2_id, time, dist, confidence):
+        time = (datetime.fromtimestamp(time[0]/1e3), datetime.fromtimestamp(time[1]/1e3))
         if p2_id in self.nodes[p1_id].edge_dict.keys():
             self.nodes[p1_id].edge_dict[p2_id].append((time, dist, confidence))
         else:
