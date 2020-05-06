@@ -5,8 +5,8 @@ from geopy.distance import geodesic
 
 def create_entry(coordinates, start_time, end_time, id, final_data):
     for entry in coordinates:
-        final_data.append([id, entry[0][0]/1e7, entry[0][1]/1e7, start_time, end_time, entry[1]])
-        print("Added Entry: ", id, entry[0][0]/1e7, entry[0][1]/1e7, start_time, end_time, entry[1])
+        final_data.append([id, entry[0][0]/1e7, entry[0][1]/1e7, start_time, end_time, entry[1]/100])
+        print("Added Entry: ", id, entry[0][0]/1e7, entry[0][1]/1e7, start_time, end_time, entry[1]/100)
 
 
 def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=None):
@@ -28,7 +28,7 @@ def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=N
                     # confidence for central point is 1
                     # confidence for other points is confidence/100
                     if 'centerLatE7' in static_dict.keys():
-                        coordinates.append(((static_dict['centerLatE7'], static_dict['centerLngE7']), 1))
+                        coordinates.append(((static_dict['centerLatE7'], static_dict['centerLngE7']), 100))
                     loc = static_dict['location']
                     
                     if 'latitudeE7' in loc.keys():
@@ -53,7 +53,7 @@ def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=N
 
                             child_coordinates = []
                             if 'centerLatE7' in dict.keys():
-                                child_coordinates.append(((dict['centerLatE7'], dict['centerLngE7']), 1))
+                                child_coordinates.append(((dict['centerLatE7'], dict['centerLngE7']), 100))
 
                             loc = dict['location']
                             child_coordinates.append(
@@ -78,21 +78,21 @@ def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=N
 
                     # path have the same format except that they have confidence as -1
                     path.append(
-                        ((dynamic_dict['startLocation']['latitudeE7'], dynamic_dict['startLocation']['longitudeE7']), -1)
+                        ((dynamic_dict['startLocation']['latitudeE7'], dynamic_dict['startLocation']['longitudeE7']), -100)
                     )
                     if 'waypointPath' in dynamic_dict.keys():
                         for waypoint in dynamic_dict['waypointPath']['waypoints']:
                             if 'latE7' in waypoint.keys():
                                 path.append(
-                                    ((waypoint['latE7'], waypoint['lngE7']), -1)
+                                    ((waypoint['latE7'], waypoint['lngE7']), -100)
                                 )
                             else:
                                 path.append(
-                                    ((waypoint['latitudeE7'], waypoint['longitudeE7']), -1)
+                                    ((waypoint['latitudeE7'], waypoint['longitudeE7']), -100)
                                 )
                     
                     path.append(
-                        ((dynamic_dict['endLocation']['latitudeE7'], dynamic_dict['endLocation']['longitudeE7']), -1)
+                        ((dynamic_dict['endLocation']['latitudeE7'], dynamic_dict['endLocation']['longitudeE7']), -100)
                     )
                     
                     # extrapolate the data if flag is passed -- we do this by connecting paths from startpoint to endpoints 
