@@ -8,13 +8,14 @@ class Node:
         self.visited = False
         self.status = 'healthy'
         self.day_of_isolation = 1000
+        self.inf_start_time = None
         self.inf_prob = 0
         self.edge_dict = {}
     
     def not_isolated(self):
         return self.status != 'isolated'
     
-    def mark_infection(self, curr_day, city):
+    def mark_infection(self, curr_day, mark_time, city):
         """Marks infection for node, given the probability of infection."""
         # check if the node has infection or not
         if not self.is_infected():
@@ -24,8 +25,13 @@ class Node:
                 self.status = 'infected'
                 self.inf_prob = 1
                 self.day_of_isolation = min(curr_day + 5, self.day_of_isolation)
+                self.inf_start_time = mark_time
                 city.healthy -= 1
                 city.infected += 1
+            else:
+                self.status = 'healthy'
+                self.inf_prob = 0
+
 
 
 
