@@ -2,12 +2,16 @@ import json
 import datetime
 import csv
 from geopy.distance import geodesic
+from math import exp
 
 def create_entry(coordinates, start_time, end_time, id, final_data):
     for entry in coordinates:
-        final_data.append([id, entry[0][0], entry[0][1], start_time, end_time, entry[1]/100])
-        print("Added Entry: ", id, entry[0][0], entry[0][1], start_time, end_time, entry[1]/100)
+        if abs(entry[1])>=3:
+            final_data.append([id, entry[0][0], entry[0][1], start_time, end_time, entry[1]/100])
+            print("Added Entry: ", id, entry[0][0], entry[0][1], start_time, end_time, entry[1]/100)
 
+def bell_func(x):
+    return 2/(exp(x) + exp(-x))
 
 def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=None):
     final_data = []
@@ -75,24 +79,27 @@ def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=N
                     dynamic_start_time = int(dynamic_dict['duration']['startTimestampMs'])
                     dynamic_end_time = int(dynamic_dict['duration']['endTimestampMs'])
                     path = []
+                    confidence = -100 * bell_func(0.5)
 
                     # path have the same format except that they have confidence as -1
                     path.append(
-                        ((dynamic_dict['startLocation']['latitudeE7']/1e7, dynamic_dict['startLocation']['longitudeE7']/1e7), -100)
+                        ((dynamic_dict['startLocation']['latitudeE7']/1e7, dynamic_dict['startLocation']['longitudeE7']/1e7), confidence)
                     )
                     if 'waypointPath' in dynamic_dict.keys():
                         for waypoint in dynamic_dict['waypointPath']['waypoints']:
                             if 'latE7' in waypoint.keys():
+                                confidence = -100 * bell_func(-2)
                                 path.append(
-                                    ((waypoint['latE7']/1e7, waypoint['lngE7']/1e7), -100)
+                                    ((waypoint['latE7']/1e7, waypoint['lngE7']/1e7), confidence)
                                 )
                             else:
+                                confidence = -100 * bell_func(-2)
                                 path.append(
-                                    ((waypoint['latitudeE7']/1e7, waypoint['longitudeE7']/1e7), -100)
+                                    ((waypoint['latitudeE7']/1e7, waypoint['longitudeE7']/1e7), confidence)
                                 )
-                    
+                    confidence = -100 * bell_func(0.5)
                     path.append(
-                        ((dynamic_dict['endLocation']['latitudeE7']/1e7, dynamic_dict['endLocation']['longitudeE7']/1e7), -100)
+                        ((dynamic_dict['endLocation']['latitudeE7']/1e7, dynamic_dict['endLocation']['longitudeE7']/1e7), confidence)
                     )
                     
                     # extrapolate the data if flag is passed -- we do this by connecting paths from startpoint to endpoints 
@@ -129,8 +136,9 @@ def export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=N
                                     gen_long = (1 - param_t)*start[1] + param_t*end[1]
                                     
                                     print(gen_lat, gen_long)
+                                    confidence = -100 * bell_func(-8)
                                     new_points.append(
-                                        ((gen_lat, gen_long), -100)
+                                        ((gen_lat, gen_long), confidence)
                                     )
                                     start = (gen_lat, gen_long)
                                     continue
@@ -153,7 +161,7 @@ def path_length(path):
         
 
 paths = [
-    ('test_monthly.json', 'guddu'),
+    # ('test_monthly.json', 'guddu'),
     ('test_monthly2.json', 'prof_swaprava'),
     ('test_monthly3.json', 'prof_hamim')
 ]
@@ -162,7 +170,7 @@ paths = [
 # paths is necessary, extrapolate = False will cause no extrapolation and path segmentation, extrapolation_interval_in_secs is the 
 # intervals between segments, for setting 0.6 seconds, a data of 10^5 order is the output
 
-final_data = export_final_data(paths, extrapolate=True, extrapolation_interval_in_secs=60)
+final_data = export_final_data(paths, extrapolate=False, extrapolation_interval_in_secs=60)
 
 with open("results_static_data.csv", "w", newline="") as f:
     writer = csv.writer(f)
